@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Nivesh">
+  <meta name="theme-color" content="#000000">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Nivesh by HVM</title>
+  <style>
+    :root {
+      --bg: #000000;
+      --bg2: #080808;
+      --bg3: #111111;
+      --card: rgba(255,255,255,0.03);
+      --card-hover: rgba(255,255,255,0.06);
+      --card-border: rgba(255,255,255,0.06);
+      --glass: rgba(255,255,255,0.04);
+      --glass-border: rgba(255,255,255,0.08);
+      --text: #ffffff;
+      --text2: rgba(255,255,255,0.5);
+      --text3: rgba(255,255,255,0.3);
+      --red: #E8272C;
+      --red-glow: rgba(232,39,44,0.3);
+      --red-soft: rgba(232,39,44,0.12);
+      --green: #00E676;
+      --green-soft: rgba(0,230,118,0.12);
+      --gold: #C9A84C;
+      --gold-soft: rgba(201,168,76,0.12);
+      --amber: #FF9100;
+      --amber-soft: rgba(255,145,0,0.12);
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      min-height: -webkit-fill-available;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ═══════════════════════════════════════════
+       HERO HEADER
+    ═══════════════════════════════════════════ */
+    .header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: calc(var(--safe-top) + 12px) 20px 14px;
+      background: rgba(0,0,0,0.85);
+      -webkit-backdrop-filter: saturate(180%) blur(30px);
+      backdrop-filter: saturate(180%) blur(30px);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .header-top {
+      display: flex; justify-content: space-between; align-items: flex-start;
+    }
+    .brand {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 22px; font-weight: 700;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.7) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .brand-sub {
+      font-size: 10px; font-weight: 500; color: var(--text3);
+      letter-spacing: 2.5px; text-transform: uppercase; margin-top: 1px;
+    }
+    .header-right { text-align: right; }
+    .live-dot {
+      display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--green); margin-right: 4px;
+      animation: pulse-dot 2s ease infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0,230,118,0.4); }
+      50% { opacity: 0.7; box-shadow: 0 0 0 4px rgba(0,230,118,0); }
+    }
+    .header-time { font-size: 11px; color: var(--text3); }
+
+    .hero-value {
+      margin-top: 12px;
+      display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+    }
+    .total-value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 36px; font-weight: 700; letter-spacing: -1.5px;
+      background: linear-gradient(135deg, #fff 30%, rgba(255,255,255,0.8) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .change-pills { display: flex; gap: 8px; align-items: center; }
+    .pill {
+      font-size: 12px; font-weight: 600; padding: 4px 10px;
+      border-radius: 100px; letter-spacing: -0.2px;
+    }
+    .pill.negative { background: var(--red-soft); color: var(--red); }
+    .pill.positive { background: var(--green-soft); color: var(--green); }
+    .pill.neutral { background: rgba(255,255,255,0.06); color: var(--text2); }
+
+    /* ═══════════════════════════════════════════
+       TAB BAR - Ferrari style
+    ═══════════════════════════════════════════ */
+    .tab-bar {
+      position: fixed; top: calc(var(--safe-top) + 104px); left: 0; right: 0; z-index: 99;
+      display: flex; padding: 0 20px;
+      background: rgba(0,0,0,0.85);
+      -webkit-backdrop-filter: saturate(180%) blur(30px);
+      backdrop-filter: saturate(180%) blur(30px);
+    }
+    .tab {
+      flex: 1; padding: 14px 0 12px; text-align: center;
+      font-size: 12px; font-weight: 600; color: var(--text3);
+      letter-spacing: 1px; text-transform: uppercase;
+      border: none; background: none; cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+    .tab.active {
+      color: var(--red);
+      border-bottom-color: var(--red);
+    }
+    .tab .badge {
+      position: absolute; top: 6px; right: calc(50% - 30px);
+      min-width: 18px; height: 18px; border-radius: 9px;
+      font-size: 10px; font-weight: 700; line-height: 18px;
+      text-align: center; padding: 0 5px;
+      background: var(--red); color: #fff;
+      box-shadow: 0 0 12px var(--red-glow);
+    }
+
+    /* ═══════════════════════════════════════════
+       CONTENT
+    ═══════════════════════════════════════════ */
+    .content {
+      padding: calc(var(--safe-top) + 148px) 20px calc(var(--safe-bottom) + 24px);
+    }
+    .tab-content {
+      display: none;
+      animation: fadeSlide 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .tab-content.active { display: block; }
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-label {
+      font-size: 10px; font-weight: 700; color: var(--text3);
+      letter-spacing: 2.5px; text-transform: uppercase;
+      margin-bottom: 14px; margin-top: 28px;
+    }
+    .section-label:first-child { margin-top: 0; }
+
+    /* ═══════════════════════════════════════════
+       CARDS - Glass morphism
+    ═══════════════════════════════════════════ */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 12px;
+      transition: all 0.3s ease;
+    }
+    .card:active { transform: scale(0.985); background: var(--card-hover); }
+
+    /* ═══════════════════════════════════════════
+       ALLOCATION - Premium bars
+    ═══════════════════════════════════════════ */
+    .alloc-item {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 16px;
+    }
+    .alloc-item:last-child { margin-bottom: 0; }
+    .alloc-flag { font-size: 20px; width: 28px; text-align: center; }
+    .alloc-details { flex: 1; }
+    .alloc-top { display: flex; justify-content: space-between; margin-bottom: 6px; }
+    .alloc-name { font-size: 13px; font-weight: 600; }
+    .alloc-value { font-size: 13px; font-weight: 600; color: var(--text2); }
+    .alloc-bar-bg {
+      height: 6px; border-radius: 3px; background: rgba(255,255,255,0.06);
+      overflow: hidden; position: relative;
+    }
+    .alloc-bar {
+      height: 100%; border-radius: 3px;
+      transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .alloc-bar.india { background: linear-gradient(90deg, #FF9933, #FF6B00); }
+    .alloc-bar.us { background: linear-gradient(90deg, #4A90D9, #1E3A5F); }
+    .alloc-bar.crypto { background: linear-gradient(90deg, #F7931A, #E8A800); }
+    .alloc-target-line {
+      position: absolute; top: -3px; bottom: -3px; width: 2px;
+      background: rgba(255,255,255,0.4); border-radius: 1px;
+    }
+    .alloc-bottom {
+      display: flex; justify-content: space-between; margin-top: 4px;
+      font-size: 11px; color: var(--text3);
+    }
+    .alloc-pct-val { font-weight: 700; color: var(--text2); }
+
+    /* ═══════════════════════════════════════════
+       STAT GRID - Dramatic numbers
+    ═══════════════════════════════════════════ */
+    .stats-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+      margin-bottom: 12px;
+    }
+    .stat-box {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 18px;
+    }
+    .stat-label {
+      font-size: 10px; font-weight: 600; color: var(--text3);
+      letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px;
+    }
+    .stat-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 28px; font-weight: 700; letter-spacing: -1px;
+    }
+    .stat-sub { font-size: 11px; color: var(--text3); margin-top: 4px; }
+
+    /* ═══════════════════════════════════════════
+       ALERT CARDS - Bold and dramatic
+    ═══════════════════════════════════════════ */
+    .alert-card {
+      border-radius: 16px; padding: 18px; margin-bottom: 10px;
+      position: relative; overflow: hidden;
+      cursor: pointer; transition: transform 0.2s;
+    }
+    .alert-card:active { transform: scale(0.98); }
+    .alert-card.critical {
+      background: linear-gradient(135deg, rgba(232,39,44,0.15) 0%, rgba(232,39,44,0.05) 100%);
+      border: 1px solid rgba(232,39,44,0.2);
+    }
+    .alert-card.warning {
+      background: linear-gradient(135deg, rgba(255,145,0,0.12) 0%, rgba(255,145,0,0.04) 100%);
+      border: 1px solid rgba(255,145,0,0.15);
+    }
+    .alert-card.opportunity {
+      background: linear-gradient(135deg, rgba(0,230,118,0.12) 0%, rgba(0,230,118,0.04) 100%);
+      border: 1px solid rgba(0,230,118,0.15);
+    }
+    .alert-stripe {
+      position: absolute; top: 0; left: 0; bottom: 0; width: 3px;
+    }
+    .alert-card.critical .alert-stripe { background: var(--red); }
+    .alert-card.warning .alert-stripe { background: var(--amber); }
+    .alert-card.opportunity .alert-stripe { background: var(--green); }
+
+    .alert-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .alert-symbol {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px; font-weight: 700; letter-spacing: -0.3px;
+    }
+    .alert-tag {
+      font-size: 9px; font-weight: 700; padding: 3px 8px; border-radius: 4px;
+      letter-spacing: 1px; text-transform: uppercase;
+    }
+    .alert-card.critical .alert-tag { background: var(--red); color: #fff; }
+    .alert-card.warning .alert-tag { background: var(--amber); color: #000; }
+    .alert-card.opportunity .alert-tag { background: var(--green); color: #000; }
+
+    .alert-title { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+    .alert-msg { font-size: 12px; color: var(--text2); line-height: 1.5; margin-bottom: 10px; }
+    .alert-action {
+      font-size: 12px; font-weight: 700; padding: 10px 14px;
+      background: rgba(255,255,255,0.05); border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.06);
+      line-height: 1.4;
+    }
+    .alert-framework {
+      font-size: 11px; color: var(--text3); margin-top: 10px;
+      font-style: italic; line-height: 1.4;
+    }
+
+    /* ═══════════════════════════════════════════
+       FILTER CHIPS
+    ═══════════════════════════════════════════ */
+    .filter-bar {
+      display: flex; gap: 8px; overflow-x: auto; padding-bottom: 12px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; margin-bottom: 4px;
+    }
+    .filter-bar::-webkit-scrollbar { display: none; }
+    .chip {
+      padding: 8px 16px; border-radius: 100px; font-size: 12px; font-weight: 600;
+      white-space: nowrap; border: 1px solid rgba(255,255,255,0.08);
+      background: transparent; color: var(--text3); cursor: pointer;
+      transition: all 0.25s ease; letter-spacing: 0.3px;
+    }
+    .chip.active {
+      background: var(--red); color: #fff;
+      border-color: var(--red);
+      box-shadow: 0 0 20px var(--red-glow);
+    }
+
+    /* ═══════════════════════════════════════════
+       HOLDINGS LIST - Premium
+    ═══════════════════════════════════════════ */
+    .holding {
+      display: flex; align-items: center; padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      cursor: pointer; transition: all 0.2s;
+    }
+    .holding:active { background: rgba(255,255,255,0.02); margin: 0 -20px; padding: 16px 20px; }
+    .holding:last-child { border-bottom: none; }
+    .holding-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      margin-right: 14px; flex-shrink: 0;
+    }
+    .holding-dot.positive { background: var(--green); box-shadow: 0 0 8px rgba(0,230,118,0.3); }
+    .holding-dot.neutral { background: var(--text3); }
+    .holding-dot.warning { background: var(--amber); box-shadow: 0 0 8px rgba(255,145,0,0.3); }
+    .holding-dot.critical { background: var(--red); box-shadow: 0 0 8px var(--red-glow); }
+
+    .holding-left { flex: 1; min-width: 0; }
+    .holding-sym {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px; font-weight: 700; letter-spacing: -0.2px;
+    }
+    .holding-sub {
+      font-size: 11px; color: var(--text3); margin-top: 1px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .holding-right { text-align: right; flex-shrink: 0; margin-left: 12px; }
+    .holding-val { font-size: 14px; font-weight: 600; }
+    .holding-pnl { font-size: 12px; font-weight: 700; margin-top: 1px; }
+    .holding-pnl.up { color: var(--green); }
+    .holding-pnl.down { color: var(--red); }
+
+    /* ═══════════════════════════════════════════
+       CRYPTO
+    ═══════════════════════════════════════════ */
+    .crypto-hero {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 20px; padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .crypto-total-label { font-size: 10px; font-weight: 600; color: var(--text3); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px; }
+    .crypto-total-val {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 30px; font-weight: 700; letter-spacing: -1px;
+    }
+    .crypto-item {
+      display: flex; align-items: center; padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .crypto-item:last-child { border-bottom: none; }
+    .crypto-icon {
+      width: 40px; height: 40px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; margin-right: 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* ═══════════════════════════════════════════
+       MODAL - Dramatic reveal
+    ═══════════════════════════════════════════ */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,0.9);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .modal-overlay.active { display: block; opacity: 1; }
+    .modal {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 201;
+      max-height: 92vh; overflow-y: auto;
+      background: #080808;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-bottom: none;
+      border-radius: 24px 24px 0 0;
+      padding: 8px 20px calc(var(--safe-bottom) + 20px);
+      -webkit-overflow-scrolling: touch;
+      display: none;
+      transform: translateY(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .modal.active { display: block; transform: translateY(0); }
+    .modal-handle {
+      width: 36px; height: 4px; background: rgba(255,255,255,0.15);
+      border-radius: 2px; margin: 4px auto 20px;
+    }
+    .modal-head {
+      display: flex; justify-content: space-between; align-items: flex-start;
+    }
+    .modal-sym {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 26px; font-weight: 700; letter-spacing: -0.5px;
+    }
+    .modal-name { font-size: 13px; color: var(--text2); margin-top: 2px; }
+    .modal-close {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08);
+      color: var(--text2); font-size: 18px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+    }
+    .modal-close:active { background: rgba(255,255,255,0.12); }
+    .modal-price {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 34px; font-weight: 700; letter-spacing: -1px; margin-top: 16px;
+    }
+    .modal-tags { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+    .mtag {
+      font-size: 11px; font-weight: 600; padding: 4px 12px;
+      border-radius: 100px; background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06); color: var(--text2);
+    }
+
+    .modal-section { margin-top: 24px; }
+    .modal-section-title {
+      font-size: 10px; font-weight: 700; color: var(--text3);
+      letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px;
+    }
+    .metric-row {
+      display: flex; justify-content: space-between; padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 13px;
+    }
+    .metric-row:last-child { border-bottom: none; }
+    .metric-label { color: var(--text2); }
+    .metric-val { font-weight: 700; font-family: 'Space Grotesk', sans-serif; }
+
+    /* Charts */
+    .chart-wrap { margin: 16px 0; }
+    .chart-label {
+      font-size: 11px; font-weight: 700; color: var(--text3);
+      letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px;
+    }
+    canvas {
+      width: 100% !important; height: 140px !important;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+
+    /* Framework cards */
+    .fw-card {
+      border-radius: 14px; padding: 16px; margin-bottom: 10px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .fw-title {
+      font-size: 14px; font-weight: 700; margin-bottom: 10px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .fw-score {
+      font-size: 11px; font-weight: 700; padding: 3px 10px;
+      border-radius: 6px; letter-spacing: 0.3px;
+    }
+    .fw-row {
+      display: flex; justify-content: space-between; padding: 5px 0; font-size: 12px;
+    }
+    .fw-row span:first-child { color: var(--text2); }
+    .fw-row span:last-child { font-weight: 600; }
+    .fw-verdict { font-size: 13px; font-weight: 700; margin-top: 8px; }
+
+    /* ═══════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════ */
+    .footer {
+      text-align: center; padding: 32px 20px 16px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      margin-top: 24px;
+    }
+    .footer-brand {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px; font-weight: 600; color: var(--text2);
+      letter-spacing: -0.3px;
+    }
+    .footer-sub { font-size: 10px; color: var(--text3); margin-top: 4px; letter-spacing: 1px; text-transform: uppercase; }
+
+    .refresh-btn {
+      display: block; width: 100%; padding: 16px; margin-top: 20px;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px; color: var(--text3); font-size: 13px;
+      font-weight: 600; cursor: pointer; text-align: center;
+      transition: all 0.25s; letter-spacing: 0.5px;
+    }
+    .refresh-btn:active { background: rgba(255,255,255,0.04); border-color: var(--red); color: var(--text); }
+
+    /* Responsive */
+    @media (max-width: 380px) {
+      .total-value { font-size: 30px; }
+      .stat-num { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-top">
+      <div>
+        <div class="brand">Nivesh</div>
+        <div class="brand-sub">Investment by HVM</div>
+      </div>
+      <div class="header-right">
+        <div class="header-time"><span class="live-dot" id="liveDot"></span> <span id="lastUpdate">Loading...</span></div>
+      </div>
+    </div>
+    <div class="hero-value">
+      <div class="total-value" id="totalValue">--</div>
+      <div class="change-pills">
+        <span class="pill negative" id="dayChange">--</span>
+        <span class="pill neutral" id="ytdBadge">--</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB BAR -->
+  <div class="tab-bar">
+    <button class="tab active" data-tab="allocation">Overview</button>
+    <button class="tab" data-tab="alerts">Alerts <span class="badge" id="alertBadge">0</span></button>
+    <button class="tab" data-tab="holdings">Holdings</button>
+    <button class="tab" data-tab="crypto">Crypto</button>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- ═══ OVERVIEW TAB ═══ -->
+    <div class="tab-content active" id="tab-allocation">
+      <div class="section-label">Asset Allocation</div>
+      <div class="card">
+        <div id="allocBars"></div>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-box">
+          <div class="stat-label">Portfolio</div>
+          <div class="stat-num" id="statTotal">--</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Holdings</div>
+          <div class="stat-num" id="statHoldings">--</div>
+          <div class="stat-sub" id="statHoldingsSub">--</div>
+        </div>
+      </div>
+      <div class="stats-row">
+        <div class="stat-box">
+          <div class="stat-label">YTD Return</div>
+          <div class="stat-num" id="statYTD" style="color:var(--green)">--</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">Alerts</div>
+          <div class="stat-num" id="statAlerts" style="color:var(--red)">--</div>
+          <div class="stat-sub" id="statAlertsSub">--</div>
+        </div>
+      </div>
+
+      <div class="section-label">Top Performers</div>
+      <div class="card" style="padding:4px 20px;" id="topPerformers"></div>
+
+      <div class="section-label">Needs Attention</div>
+      <div class="card" style="padding:4px 20px;" id="needsAttention"></div>
+    </div>
+
+    <!-- ═══ ALERTS TAB ═══ -->
+    <div class="tab-content" id="tab-alerts">
+      <div class="filter-bar" id="alertFilters">
+        <div class="chip active" data-filter="all">All</div>
+        <div class="chip" data-filter="critical">Critical</div>
+        <div class="chip" data-filter="warning">Warning</div>
+        <div class="chip" data-filter="opportunity">Opportunity</div>
+      </div>
+      <div id="alertsList"></div>
+    </div>
+
+    <!-- ═══ HOLDINGS TAB ═══ -->
+    <div class="tab-content" id="tab-holdings">
+      <div class="filter-bar" id="marketFilters">
+        <div class="chip active" data-market="india">India (30)</div>
+        <div class="chip" data-market="us">US (16)</div>
+      </div>
+      <div class="filter-bar" id="sortFilters">
+        <div class="chip active" data-sort="value">By Value</div>
+        <div class="chip" data-sort="pnl-desc">Gainers</div>
+        <div class="chip" data-sort="pnl-asc">Losers</div>
+        <div class="chip" data-sort="name">A-Z</div>
+      </div>
+      <div class="card" style="padding:4px 20px;" id="holdingsList"></div>
+    </div>
+
+    <!-- ═══ CRYPTO TAB ═══ -->
+    <div class="tab-content" id="tab-crypto">
+      <div class="card" id="cryptoCard">
+        <div class="crypto-hero">
+          <div>
+            <div class="crypto-total-label">Total Value</div>
+            <div class="crypto-total-val" id="cryptoTotal">--</div>
+          </div>
+          <div style="text-align:right;">
+            <div class="crypto-total-label">Overall P&L</div>
+            <div class="crypto-total-val" id="cryptoPnl" style="color:var(--red)">--</div>
+          </div>
+        </div>
+        <div id="cryptoList"></div>
+      </div>
+      <div class="section-label">Crypto Alerts</div>
+      <div id="cryptoAlerts"></div>
+    </div>
+
+    <button class="refresh-btn" onclick="loadData()">Refresh Data</button>
+
+    <div class="footer">
+      <div class="footer-brand">Nivesh</div>
+      <div class="footer-sub">Investment by HVM</div>
+    </div>
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modalOverlay"></div>
+  <div class="modal" id="stockModal">
+    <div class="modal-handle"></div>
+    <div class="modal-head">
+      <div>
+        <div class="modal-sym" id="modalSymbol">--</div>
+        <div class="modal-name" id="modalName">--</div>
+      </div>
+      <button class="modal-close" id="modalClose">&times;</button>
+    </div>
+    <div class="modal-price" id="modalPrice">--</div>
+    <div class="modal-tags" id="modalTags"></div>
+    <div id="modalAlert" style="margin-top:16px;"></div>
+    <div class="modal-section">
+      <div class="modal-section-title">Position</div>
+      <div id="modalMetrics"></div>
+    </div>
+    <div id="modalFundamentals"></div>
+    <div id="modalFrameworks"></div>
+  </div>
+
+  <script>
+    let portfolioData = null, alertsData = null;
+    let holdingsData = { india: [], us: [], crypto: [] };
+    let currentMarket = 'india', currentSort = 'value', currentAlertFilter = 'all';
+    const API = window.location.origin + '/api';
+
+    async function fetchJSON(url) {
+      try { const r = await fetch(url); const j = await r.json(); return j.success ? j.data : null; }
+      catch { return null; }
+    }
+
+    async function loadData() {
+      const [portfolio, alerts, india, us, crypto] = await Promise.all([
+        fetchJSON(`${API}/portfolio`), fetchJSON(`${API}/alerts`),
+        fetchJSON(`${API}/holdings/india`), fetchJSON(`${API}/holdings/us`),
+        fetchJSON(`${API}/holdings/crypto`),
+      ]);
+      if (portfolio) { portfolioData = portfolio; renderHeader(); renderAllocation(); renderStats(); }
+      if (alerts) { alertsData = alerts; renderAlerts(); }
+      if (india) { holdingsData.india = india.holdings; renderTopPerformers(); renderNeedsAttention(); }
+      if (us) holdingsData.us = us.holdings;
+      if (crypto) { holdingsData.crypto = crypto.holdings; renderCrypto(); }
+      renderHoldings();
+      const isLive = portfolioData?.priceStatus?.live;
+      const dot = document.getElementById('liveDot');
+      dot.style.background = isLive ? 'var(--green)' : 'var(--amber)';
+      document.getElementById('lastUpdate').textContent = (isLive ? 'Live · ' : 'Static · ') + new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+      try { localStorage.setItem('nivesh_cache', JSON.stringify({ portfolio: portfolioData, alerts: alertsData, holdings: holdingsData, ts: Date.now() })); } catch {}
+    }
+
+    function loadCached() {
+      try {
+        const c = JSON.parse(localStorage.getItem('nivesh_cache'));
+        if (c?.ts) { portfolioData = c.portfolio; alertsData = c.alerts; holdingsData = c.holdings;
+          renderHeader(); renderAllocation(); renderStats(); renderAlerts(); renderHoldings();
+          renderTopPerformers(); renderNeedsAttention(); renderCrypto();
+          document.getElementById('lastUpdate').textContent = 'Cached';
+        }
+      } catch {}
+    }
+
+    function renderHeader() {
+      if (!portfolioData) return;
+      document.getElementById('totalValue').textContent = portfolioData.totalValueFormatted;
+      const dc = portfolioData.oneDayChange;
+      const dEl = document.getElementById('dayChange');
+      dEl.textContent = `${dc > 0 ? '+' : ''}${dc}% today`;
+      dEl.className = `pill ${dc >= 0 ? 'positive' : 'negative'}`;
+      const ytd = portfolioData.ytdReturn;
+      document.getElementById('ytdBadge').textContent = `YTD ${ytd > 0 ? '+' : ''}${ytd}%`;
+      document.getElementById('ytdBadge').className = `pill ${ytd >= 0 ? 'positive' : 'neutral'}`;
+    }
+
+    function renderAllocation() {
+      if (!portfolioData?.allocation) return;
+      const a = portfolioData.allocation;
+      const rows = [
+        { flag: '🇮🇳', name: 'India', cls: 'india', pct: a.india.pct, target: a.india.target, val: `₹${(a.india.value/100000).toFixed(1)}L` },
+        { flag: '🇺🇸', name: 'United States', cls: 'us', pct: a.us.pct, target: a.us.target, val: a.us.valueUSD ? `$${(a.us.valueUSD/1000).toFixed(1)}K` : `₹${(a.us.value/100000).toFixed(1)}L` },
+        { flag: '₿', name: 'Crypto', cls: 'crypto', pct: a.crypto.pct, target: a.crypto.target, val: `₹${(a.crypto.value/1000).toFixed(0)}K` },
+      ];
+      document.getElementById('allocBars').innerHTML = rows.map(r => `
+        <div class="alloc-item">
+          <div class="alloc-flag">${r.flag}</div>
+          <div class="alloc-details">
+            <div class="alloc-top">
+              <span class="alloc-name">${r.name}</span>
+              <span class="alloc-value">${r.val}</span>
+            </div>
+            <div class="alloc-bar-bg">
+              <div class="alloc-bar ${r.cls}" style="width:0%" data-target="${r.pct}"></div>
+              <div class="alloc-target-line" style="left:${r.target}%"></div>
+            </div>
+            <div class="alloc-bottom">
+              <span><span class="alloc-pct-val">${r.pct}%</span> allocated</span>
+              <span>Target: ${r.target}%</span>
+            </div>
+          </div>
+        </div>`).join('');
+      setTimeout(() => {
+        document.querySelectorAll('.alloc-bar').forEach(b => { b.style.width = b.dataset.target + '%'; });
+      }, 50);
+    }
+
+    function renderStats() {
+      if (!portfolioData) return;
+      document.getElementById('statTotal').textContent = portfolioData.totalValueFormatted;
+      document.getElementById('statHoldings').textContent = portfolioData.holdingsCount?.total || '--';
+      document.getElementById('statHoldingsSub').textContent = `${portfolioData.holdingsCount?.india}IN + ${portfolioData.holdingsCount?.us}US + ${portfolioData.holdingsCount?.crypto}C`;
+      const yt = document.getElementById('statYTD');
+      yt.textContent = `+${portfolioData.ytdReturn}%`;
+      yt.style.color = portfolioData.ytdReturn >= 0 ? 'var(--green)' : 'var(--red)';
+      document.getElementById('statAlerts').textContent = portfolioData.criticalAlerts || 0;
+      document.getElementById('statAlertsSub').textContent = `${portfolioData.warningAlerts} warnings`;
+      document.getElementById('alertBadge').textContent = portfolioData.criticalAlerts || 0;
+    }
+
+    function renderTopPerformers() {
+      const s = [...holdingsData.india].sort((a, b) => b.pnl - a.pnl).slice(0, 5);
+      document.getElementById('topPerformers').innerHTML = s.map(h => holdingHTML(h)).join('');
+    }
+    function renderNeedsAttention() {
+      const c = [...holdingsData.india].filter(s => s.status === 'critical' || s.status === 'warning');
+      document.getElementById('needsAttention').innerHTML = c.length ? c.map(h => holdingHTML(h)).join('')
+        : '<div style="padding:16px 0;color:var(--text3);font-size:13px;">All clear</div>';
+    }
+
+    function renderAlerts() {
+      if (!alertsData?.alerts) return;
+      let f = alertsData.alerts;
+      if (currentAlertFilter !== 'all') f = f.filter(a => a.type === currentAlertFilter);
+      document.getElementById('alertsList').innerHTML = f.map(a => `
+        <div class="alert-card ${a.type}" onclick="openStockModal('${a.symbol}')">
+          <div class="alert-stripe"></div>
+          <div class="alert-top">
+            <span class="alert-symbol">${a.symbol}</span>
+            <span class="alert-tag">${a.type}</span>
+          </div>
+          <div class="alert-title">${a.title}</div>
+          <div class="alert-msg">${a.message}</div>
+          <div class="alert-action">→ ${a.action}</div>
+          <div class="alert-framework">${a.framework}</div>
+        </div>`).join('');
+    }
+
+    function renderHoldings() {
+      const data = [...(holdingsData[currentMarket] || [])];
+      switch (currentSort) {
+        case 'pnl-desc': data.sort((a, b) => b.pnl - a.pnl); break;
+        case 'pnl-asc': data.sort((a, b) => a.pnl - b.pnl); break;
+        case 'name': data.sort((a, b) => a.symbol.localeCompare(b.symbol)); break;
+        default: data.sort((a, b) => b.currentValue - a.currentValue);
+      }
+      document.getElementById('holdingsList').innerHTML = data.map(h => holdingHTML(h)).join('');
+    }
+
+    function holdingHTML(s) {
+      const isUS = holdingsData.us.some(u => u.symbol === s.symbol);
+      const val = isUS ? `$${s.currentValue.toLocaleString()}` : `₹${(s.currentValue/1000).toFixed(1)}K`;
+      return `<div class="holding" onclick="openStockModal('${s.symbol}')">
+        <div class="holding-dot ${s.status || (s.pnl >= 0 ? 'positive' : 'critical')}"></div>
+        <div class="holding-left">
+          <div class="holding-sym">${s.symbol}</div>
+          <div class="holding-sub">${s.name} · ${s.sector || ''}</div>
+        </div>
+        <div class="holding-right">
+          <div class="holding-val">${val}</div>
+          <div class="holding-pnl ${s.pnl >= 0 ? 'up' : 'down'}">${s.pnl >= 0 ? '+' : ''}${s.pnl}%</div>
+        </div>
+      </div>`;
+    }
+
+    function renderCrypto() {
+      const data = holdingsData.crypto || [];
+      const total = data.reduce((s, c) => s + c.currentValue, 0);
+      const inv = data.reduce((s, c) => s + c.buyValue, 0);
+      const pnl = ((total - inv) / inv * 100).toFixed(1);
+      document.getElementById('cryptoTotal').textContent = `₹${(total/1000).toFixed(1)}K`;
+      const pEl = document.getElementById('cryptoPnl');
+      pEl.textContent = `${pnl}%`; pEl.style.color = pnl >= 0 ? 'var(--green)' : 'var(--red)';
+      const icons = { BTC: '₿', ETH: 'Ξ', SOL: '◎', SHIB: '🐕', AVAX: '🔺', ADA: '♦' };
+      document.getElementById('cryptoList').innerHTML = data.map(c => `
+        <div class="crypto-item">
+          <div class="crypto-icon">${icons[c.symbol] || '●'}</div>
+          <div class="holding-left">
+            <div class="holding-sym">${c.symbol}</div>
+            <div class="holding-sub">${c.name}</div>
+          </div>
+          <div class="holding-right">
+            <div class="holding-val">₹${(c.currentValue/1000).toFixed(1)}K</div>
+            <div class="holding-pnl ${c.pnl >= 0 ? 'up' : 'down'}">${c.pnl >= 0 ? '+' : ''}${c.pnl}%</div>
+          </div>
+        </div>`).join('');
+      const ca = (alertsData?.alerts || []).filter(a => a.market === 'crypto');
+      document.getElementById('cryptoAlerts').innerHTML = ca.length ? ca.map(a => `
+        <div class="alert-card ${a.type}"><div class="alert-stripe"></div>
+          <div class="alert-top"><span class="alert-symbol">${a.symbol}</span><span class="alert-tag">${a.type}</span></div>
+          <div class="alert-msg">${a.message}</div>
+          <div class="alert-action">→ ${a.action}</div>
+        </div>`).join('') : '<div style="padding:16px;color:var(--text3);font-size:13px;">No crypto alerts</div>';
+    }
+
+    async function openStockModal(symbol) {
+      let stock = holdingsData.india.find(s => s.symbol === symbol)
+        || holdingsData.us.find(s => s.symbol === symbol)
+        || holdingsData.crypto.find(s => s.symbol === symbol);
+      if (!stock) return;
+      const isUS = holdingsData.us.some(u => u.symbol === symbol);
+      const curr = isUS ? '$' : '₹';
+      document.getElementById('modalSymbol').textContent = stock.symbol;
+      document.getElementById('modalName').textContent = stock.name;
+      document.getElementById('modalPrice').textContent = `${curr}${stock.currentPrice?.toLocaleString() || '--'}`;
+      document.getElementById('modalTags').innerHTML = `
+        <span class="mtag">${stock.sector || 'N/A'}</span>
+        <span class="mtag" style="color:${stock.pnl >= 0 ? 'var(--green)' : 'var(--red)'};">${stock.pnl >= 0 ? '+' : ''}${stock.pnl}%</span>
+        <span class="mtag">${(stock.status || '').toUpperCase()}</span>`;
+      const sa = (alertsData?.alerts || []).find(a => a.symbol === symbol);
+      document.getElementById('modalAlert').innerHTML = sa ? `
+        <div class="alert-card ${sa.type}" style="margin:0"><div class="alert-stripe"></div>
+          <div class="alert-title">${sa.title}</div>
+          <div class="alert-msg">${sa.message}</div>
+          <div class="alert-action">→ ${sa.action}</div>
+        </div>` : `<div style="font-size:12px;color:var(--text3);padding:4px 0;">${stock.alert || 'No active alerts'}</div>`;
+      document.getElementById('modalMetrics').innerHTML = `
+        <div class="metric-row"><span class="metric-label">Quantity</span><span class="metric-val">${stock.qty}</span></div>
+        <div class="metric-row"><span class="metric-label">Buy Price</span><span class="metric-val">${curr}${stock.buyPrice?.toLocaleString()}</span></div>
+        <div class="metric-row"><span class="metric-label">Current Price</span><span class="metric-val">${curr}${stock.currentPrice?.toLocaleString()}</span></div>
+        <div class="metric-row"><span class="metric-label">Invested</span><span class="metric-val">${curr}${stock.buyValue?.toLocaleString()}</span></div>
+        <div class="metric-row"><span class="metric-label">Current Value</span><span class="metric-val">${curr}${stock.currentValue?.toLocaleString()}</span></div>
+        <div class="metric-row"><span class="metric-label">P&L</span><span class="metric-val" style="color:${stock.pnl >= 0 ? 'var(--green)' : 'var(--red)'};">${stock.pnl >= 0 ? '+' : ''}${stock.pnl}%</span></div>`;
+      try { const a = await fetchJSON(`${API}/analysis/${symbol}`); renderModalFund(a); renderModalFW(a); }
+      catch { document.getElementById('modalFundamentals').innerHTML = ''; document.getElementById('modalFrameworks').innerHTML = ''; }
+      document.getElementById('modalOverlay').classList.add('active');
+      document.getElementById('stockModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function renderModalFund(a) {
+      const el = document.getElementById('modalFundamentals');
+      if (!a?.fundamentals) { el.innerHTML = '<div style="color:var(--text3);font-size:12px;margin-top:20px;">No fundamental data</div>'; return; }
+      const f = a.fundamentals, q = f.quarters, m = f.metrics;
+      const ti = d => d === 'improving' ? '↗' : d === 'deteriorating' ? '↘' : '→';
+      el.innerHTML = `
+        <div class="modal-section">
+          <div class="modal-section-title">10-Quarter Fundamentals</div>
+          <div style="font-size:12px;color:var(--text2);margin-bottom:14px;line-height:1.5;">${f.summary}</div>
+          <div class="chart-wrap"><div class="chart-label">${ti(f.trends.revenue.direction)} Revenue Growth (%)</div><canvas id="cRev"></canvas></div>
+          <div class="chart-wrap"><div class="chart-label">${ti(f.trends.margin.direction)} Operating Margin (%)</div><canvas id="cOPM"></canvas></div>
+          <div class="chart-wrap"><div class="chart-label">${ti(f.trends.eps.direction)} EPS</div><canvas id="cEPS"></canvas></div>
+          <div class="metric-row"><span class="metric-label">Overall Trend</span><span class="metric-val" style="color:${f.overall==='improving'?'var(--green)':f.overall==='deteriorating'?'var(--red)':'var(--amber)'};">${(f.overall||'').toUpperCase()}</span></div>
+          <div class="metric-row"><span class="metric-label">Signal</span><span class="metric-val" style="color:${f.signal==='SELL'?'var(--red)':f.signal==='BUY'?'var(--green)':'var(--amber)'};">${f.signal}</span></div>
+          <div class="metric-row"><span class="metric-label">Latest ROE</span><span class="metric-val">${m.roe?.[9]||'--'}%</span></div>
+          <div class="metric-row"><span class="metric-label">Debt/Equity</span><span class="metric-val">${m.debtToEquity?.[9]||'--'}x</span></div>
+        </div>`;
+      setTimeout(() => { drawChart('cRev',q,m.revenueGrowth); drawChart('cOPM',q,m.opm); drawChart('cEPS',q,m.eps); }, 50);
+    }
+
+    function renderModalFW(a) {
+      const el = document.getElementById('modalFrameworks');
+      if (!a) { el.innerHTML = ''; return; }
+      let h = '<div class="modal-section"><div class="modal-section-title">Investor Frameworks</div>';
+      if (a.buffett) {
+        const b = a.buffett, c = b.score>=70?'var(--green)':b.score>=40?'var(--amber)':'var(--red)';
+        h += `<div class="fw-card"><div class="fw-title">Buffett Quality <span class="fw-score" style="background:${c};color:#000;">${b.score}/100 (${b.grade})</span></div>
+          ${b.details.map(d=>`<div class="fw-row"><span>${d.emoji} ${d.metric}</span><span>${d.value} — ${d.verdict}</span></div>`).join('')}
+          <div class="fw-verdict" style="color:${c};">→ ${b.verdict}</div></div>`;
+      }
+      if (a.lynch) {
+        const l = a.lynch, c = l.peg<1.5?'var(--green)':l.peg<2.5?'var(--amber)':'var(--red)';
+        h += `<div class="fw-card"><div class="fw-title">Lynch Growth <span class="fw-score" style="background:${c};color:#000;">PEG ${l.peg}x</span></div>
+          ${l.details.map(d=>`<div class="fw-row"><span>${d.metric}</span><span>${d.value}</span></div>`).join('')}
+          <div class="fw-verdict" style="color:${c};">→ ${l.verdict}</div></div>`;
+      }
+      if (a.jhunjhunwala) {
+        const j = a.jhunjhunwala, c = j.score>=60?'var(--green)':j.score>=30?'var(--amber)':'var(--red)';
+        h += `<div class="fw-card"><div class="fw-title">Jhunjhunwala <span class="fw-score" style="background:${c};color:#000;">${j.score}/100</span></div>
+          ${j.signals.map(s=>`<div class="fw-row"><span>${s.emoji} ${s.type}</span><span style="font-size:11px;">${s.text}</span></div>`).join('')}
+          <div class="fw-verdict" style="color:${c};">→ ${j.verdict}</div></div>`;
+      }
+      h += '</div>';
+      el.innerHTML = h;
+    }
+
+    function drawChart(id, labels, data) {
+      const canvas = document.getElementById(id);
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const dpr = window.devicePixelRatio || 1;
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * dpr; canvas.height = rect.height * dpr;
+      ctx.scale(dpr, dpr);
+      const w = rect.width, h = rect.height;
+      const pad = { top: 16, right: 14, bottom: 26, left: 36 };
+      const pw = w - pad.left - pad.right, ph = h - pad.top - pad.bottom;
+      const min = Math.min(...data)*0.9, max = Math.max(...data)*1.1, range = max-min||1;
+
+      ctx.strokeStyle = 'rgba(255,255,255,0.04)'; ctx.lineWidth = 1;
+      for (let i = 0; i <= 3; i++) {
+        const y = pad.top + (ph/3)*i;
+        ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(w-pad.right, y); ctx.stroke();
+        ctx.fillStyle = 'rgba(255,255,255,0.2)'; ctx.font = '9px Inter'; ctx.textAlign = 'right';
+        ctx.fillText((max-(range/3)*i).toFixed(1), pad.left-4, y+3);
+      }
+      ctx.fillStyle = 'rgba(255,255,255,0.2)'; ctx.font = '8px Inter'; ctx.textAlign = 'center';
+      data.forEach((_, i) => { if (i%3===0 || i===data.length-1) {
+        ctx.fillText(labels[i]||'', pad.left+(pw/(data.length-1))*i, h-pad.bottom+12);
+      }});
+      const up = data[data.length-1] >= data[0];
+      const lc = up ? '#00E676' : '#E8272C';
+      const fc = up ? 'rgba(0,230,118,0.08)' : 'rgba(232,39,44,0.08)';
+      ctx.beginPath();
+      data.forEach((v,i) => { const x=pad.left+(pw/(data.length-1))*i, y=pad.top+ph-((v-min)/range)*ph; i===0?ctx.moveTo(x,y):ctx.lineTo(x,y); });
+      ctx.lineTo(pad.left+pw, pad.top+ph); ctx.lineTo(pad.left, pad.top+ph); ctx.closePath();
+      ctx.fillStyle = fc; ctx.fill();
+      ctx.beginPath();
+      data.forEach((v,i) => { const x=pad.left+(pw/(data.length-1))*i, y=pad.top+ph-((v-min)/range)*ph; i===0?ctx.moveTo(x,y):ctx.lineTo(x,y); });
+      ctx.strokeStyle = lc; ctx.lineWidth = 2; ctx.stroke();
+      data.forEach((v,i) => { const x=pad.left+(pw/(data.length-1))*i, y=pad.top+ph-((v-min)/range)*ph;
+        ctx.beginPath(); ctx.arc(x,y,2.5,0,Math.PI*2); ctx.fillStyle=lc; ctx.fill(); });
+      const lx=pad.left+pw, ly=pad.top+ph-((data[data.length-1]-min)/range)*ph;
+      ctx.fillStyle=lc; ctx.font='bold 10px Inter'; ctx.textAlign='right'; ctx.fillText(data[data.length-1], lx, ly-6);
+    }
+
+    // Event handlers
+    document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+      document.getElementById(`tab-${t.dataset.tab}`).classList.add('active');
+      window.scrollTo(0, 0);
+    }));
+    document.getElementById('alertFilters').addEventListener('click', e => {
+      if (!e.target.classList.contains('chip')) return;
+      document.querySelectorAll('#alertFilters .chip').forEach(c => c.classList.remove('active'));
+      e.target.classList.add('active'); currentAlertFilter = e.target.dataset.filter; renderAlerts();
+    });
+    document.getElementById('marketFilters').addEventListener('click', e => {
+      if (!e.target.classList.contains('chip')) return;
+      document.querySelectorAll('#marketFilters .chip').forEach(c => c.classList.remove('active'));
+      e.target.classList.add('active'); currentMarket = e.target.dataset.market; renderHoldings();
+    });
+    document.getElementById('sortFilters').addEventListener('click', e => {
+      if (!e.target.classList.contains('chip')) return;
+      document.querySelectorAll('#sortFilters .chip').forEach(c => c.classList.remove('active'));
+      e.target.classList.add('active'); currentSort = e.target.dataset.sort; renderHoldings();
+    });
+
+    function closeModal() {
+      document.getElementById('stockModal').classList.remove('active');
+      document.getElementById('modalOverlay').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('modalClose').addEventListener('click', closeModal);
+    document.getElementById('modalOverlay').addEventListener('click', closeModal);
+    let touchY = 0;
+    document.getElementById('stockModal').addEventListener('touchstart', e => { touchY = e.touches[0].clientY; });
+    document.getElementById('stockModal').addEventListener('touchmove', e => {
+      if (e.touches[0].clientY - touchY > 80 && document.getElementById('stockModal').scrollTop <= 0) closeModal();
+    });
+
+    loadCached(); loadData();
+    setInterval(loadData, 5 * 60 * 1000);
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(()=>{});
+  </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "name": "Nivesh — Investment by HVM",
+  "short_name": "Nivesh",
+  "description": "Multi-asset portfolio intelligence",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect fill='%23000' width='512' height='512' rx='100'/><text y='340' x='256' text-anchor='middle' font-family='sans-serif' font-weight='bold' font-size='200' fill='%23E8272C'>N</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
