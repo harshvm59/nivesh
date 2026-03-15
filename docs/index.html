@@ -585,9 +585,18 @@ function fmtUSD(v) {
 function renderOverview() {
   const p = computePortfolio();
   document.getElementById('totalValue').textContent = fmtINR(p.totalINR);
-  document.getElementById('changePills').innerHTML =
-    '<span class="pill '+(PORTFOLIO_META.ytdReturn>=0?'green':'red')+'">YTD '+(PORTFOLIO_META.ytdReturn>=0?'+':'')+PORTFOLIO_META.ytdReturn+'%</span>' +
-    '<span class="pill '+(PORTFOLIO_META.oneDayChange>=0?'green':'red')+'">1D '+(PORTFOLIO_META.oneDayChange>=0?'+':'')+PORTFOLIO_META.oneDayChange+'%</span>';
+  const ytd = PORTFOLIO_META.ytdReturn;
+  const dc = PORTFOLIO_META.oneDayChange;
+  let pillsHTML = '';
+  if (ytd != null) {
+    pillsHTML += '<span class="pill '+(ytd>=0?'green':'red')+'">YTD '+(ytd>=0?'+':'')+ytd+'%</span>';
+  }
+  if (dc != null) {
+    pillsHTML += '<span class="pill '+(dc>=0?'green':'red')+'">1D '+(dc>=0?'+':'')+dc+'%</span>';
+  } else {
+    pillsHTML += '<span class="pill green">Live</span>';
+  }
+  document.getElementById('changePills').innerHTML = pillsHTML;
 
   // Allocation bars
   const allocHTML = [
