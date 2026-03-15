@@ -1,0 +1,37 @@
+name: Update Portfolio Prices
+
+on:
+  schedule:
+    # Run at 3:30 AM IST (10:00 PM UTC previous day) - before India market opens
+    - cron: '0 22 * * 0-5'
+    # Run at 2:30 PM IST (9:00 AM UTC) - after India market opens
+    - cron: '0 9 * * 1-6'
+    # Run at 9:30 PM IST (4:00 PM UTC) - after US market opens
+    - cron: '0 16 * * 1-5'
+  workflow_dispatch: # Manual trigger
+
+jobs:
+  update-prices:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch latest prices and update
+        run: node .github/scripts/update-prices.js
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git diff --quiet docs/index.html && echo "No changes" && exit 0
+          git add docs/index.html src/data/portfolio.js
+          git commit -m "Auto-update prices $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git push
