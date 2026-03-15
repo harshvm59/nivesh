@@ -693,11 +693,20 @@
       document.getElementById('totalValue').textContent = portfolioData.totalValueFormatted;
       const dc = portfolioData.oneDayChange;
       const dEl = document.getElementById('dayChange');
-      dEl.textContent = `${dc > 0 ? '+' : ''}${dc}% today`;
-      dEl.className = `pill ${dc >= 0 ? 'positive' : 'negative'}`;
+      if (dc != null) {
+        dEl.textContent = `${dc > 0 ? '+' : ''}${dc}% today`;
+        dEl.className = `pill ${dc >= 0 ? 'positive' : 'negative'}`;
+      } else {
+        dEl.textContent = 'Live';
+        dEl.className = 'pill positive';
+      }
       const ytd = portfolioData.ytdReturn;
-      document.getElementById('ytdBadge').textContent = `YTD ${ytd > 0 ? '+' : ''}${ytd}%`;
-      document.getElementById('ytdBadge').className = `pill ${ytd >= 0 ? 'positive' : 'neutral'}`;
+      if (ytd != null) {
+        document.getElementById('ytdBadge').textContent = `YTD ${ytd > 0 ? '+' : ''}${ytd}%`;
+        document.getElementById('ytdBadge').className = `pill ${ytd >= 0 ? 'positive' : 'neutral'}`;
+      } else {
+        document.getElementById('ytdBadge').style.display = 'none';
+      }
     }
 
     function renderAllocation() {
@@ -737,8 +746,13 @@
       document.getElementById('statHoldings').textContent = portfolioData.holdingsCount?.total || '--';
       document.getElementById('statHoldingsSub').textContent = `${portfolioData.holdingsCount?.india}IN + ${portfolioData.holdingsCount?.us}US + ${portfolioData.holdingsCount?.crypto}C`;
       const yt = document.getElementById('statYTD');
-      yt.textContent = `+${portfolioData.ytdReturn}%`;
-      yt.style.color = portfolioData.ytdReturn >= 0 ? 'var(--green)' : 'var(--red)';
+      if (portfolioData.ytdReturn != null) {
+        yt.textContent = `+${portfolioData.ytdReturn}%`;
+        yt.style.color = portfolioData.ytdReturn >= 0 ? 'var(--green)' : 'var(--red)';
+      } else {
+        yt.textContent = '--';
+        yt.style.color = 'var(--text-secondary)';
+      }
       document.getElementById('statAlerts').textContent = portfolioData.criticalAlerts || 0;
       document.getElementById('statAlertsSub').textContent = `${portfolioData.warningAlerts} warnings`;
       document.getElementById('alertBadge').textContent = portfolioData.criticalAlerts || 0;
