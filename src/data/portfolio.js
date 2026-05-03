@@ -8,7 +8,7 @@ const PORTFOLIO_META = {
   ytdReturn: null, // computed dynamically
   oneDayChange: null,
   allocationTarget: { india: 60, us: 30, crypto: 10 },
-  currency: { inr: 94.91 }, // USD to INR (live 2026-03-09)
+  currency: { inr: 94.88 }, // USD to INR (live 2026-03-09)
 };
 
 // ═══════════════════════════════════════════════════════════
@@ -59,10 +59,10 @@ const US_STOCKS = [
   { symbol: 'NVDA', name: 'NVIDIA Corp', sector: 'Semiconductors', qty: 50, buyPrice: 62, currentPrice: 198.45, buyValue: 3100, currentValue: 9923, pnl: 220.1, status: 'positive', alert: 'AI infrastructure spending continues - Blackwell generation' },
   { symbol: 'TSLA', name: 'Tesla Inc', sector: 'EV / Auto', qty: 20, buyPrice: 210, currentPrice: 390.82, buyValue: 4200, currentValue: 7816, pnl: 86.1, status: 'positive', alert: 'Robotaxi + energy storage driving valuation' },
   { symbol: 'META', name: 'Meta Platforms', sector: 'Social Media', qty: 12, buyPrice: 380, currentPrice: 608.745, buyValue: 4560, currentValue: 7305, pnl: 60.2, status: 'positive', alert: 'Reels monetization + AI investment paying off' },
-  { symbol: 'MSFT', name: 'Microsoft Corp', sector: 'Software', qty: 15, buyPrice: 420, currentPrice: 414.44, buyValue: 6300, currentValue: 6217, pnl: -1.3, status: 'neutral', alert: 'Azure growth steady, Copilot monetization progressing' },
-  { symbol: 'AAPL', name: 'Apple Inc', sector: 'Consumer Tech', qty: 30, buyPrice: 178, currentPrice: 280.14, buyValue: 5340, currentValue: 8404, pnl: 57.4, status: 'positive', alert: 'iPhone cycle + Services segment growing strongly' },
+  { symbol: 'MSFT', name: 'Microsoft Corp', sector: 'Software', qty: 15, buyPrice: 420, currentPrice: 414.195, buyValue: 6300, currentValue: 6213, pnl: -1.4, status: 'neutral', alert: 'Azure growth steady, Copilot monetization progressing' },
+  { symbol: 'AAPL', name: 'Apple Inc', sector: 'Consumer Tech', qty: 30, buyPrice: 178, currentPrice: 280.25, buyValue: 5340, currentValue: 8408, pnl: 57.5, status: 'positive', alert: 'iPhone cycle + Services segment growing strongly' },
   { symbol: 'GOOGL', name: 'Alphabet Inc', sector: 'Search / Cloud', qty: 35, buyPrice: 138, currentPrice: 385.69, buyValue: 4830, currentValue: 13499, pnl: 179.5, status: 'positive', alert: 'Search + Cloud profitable, Gemini gaining traction' },
-  { symbol: 'AMZN', name: 'Amazon.com', sector: 'E-Commerce / Cloud', qty: 28, buyPrice: 155, currentPrice: 268.26, buyValue: 4340, currentValue: 7511, pnl: 73.1, status: 'positive', alert: 'AWS re-acceleration + retail margin expansion' },
+  { symbol: 'AMZN', name: 'Amazon.com', sector: 'E-Commerce / Cloud', qty: 28, buyPrice: 155, currentPrice: 268.42, buyValue: 4340, currentValue: 7516, pnl: 73.2, status: 'positive', alert: 'AWS re-acceleration + retail margin expansion' },
   { symbol: 'AMD', name: 'Advanced Micro Devices', sector: 'Semiconductors', qty: 30, buyPrice: 120, currentPrice: 360.54, buyValue: 3600, currentValue: 10816, pnl: 200.4, status: 'positive', alert: 'Data center GPU share gains, MI300X ramp' },
   { symbol: 'NFLX', name: 'Netflix Inc', sector: 'Streaming', qty: 80, buyPrice: 48, currentPrice: 92.06, buyValue: 3840, currentValue: 7365, pnl: 91.8, status: 'positive', alert: 'Post 10:1 split. Ad tier + password sharing crackdown working.' },
   { symbol: 'CRM', name: 'Salesforce Inc', sector: 'Enterprise SW', qty: 18, buyPrice: 245, currentPrice: 183.82, buyValue: 4410, currentValue: 3309, pnl: -25.0, status: 'critical', alert: 'Enterprise spending softening, AI agents competition' },
@@ -78,12 +78,12 @@ const US_STOCKS = [
 // CRYPTO - 6 Holdings (prices in INR from CoinGecko)
 // ═══════════════════════════════════════════════════════════
 const CRYPTO_HOLDINGS = [
-  { symbol: 'BTC', name: 'Bitcoin', qty: 0.012, buyPrice: 5200000, currentPrice: 7429516, buyValue: 62400, currentValue: 89154, pnl: 42.9, status: 'positive', alert: 'Halving cycle bullish - approaching ATH territory', dominance: 54.2 },
-  { symbol: 'ETH', name: 'Ethereum', qty: 0.25, buyPrice: 320000, currentPrice: 218689, buyValue: 80000, currentValue: 54672, pnl: -31.7, status: 'critical', alert: 'L2 scaling reducing fee revenue, deflationary thesis weakening', dominance: 16.8 },
-  { symbol: 'SOL', name: 'Solana', qty: 2, buyPrice: 18500, currentPrice: 7969.26, buyValue: 37000, currentValue: 15939, pnl: -56.9, status: 'critical', alert: 'Down 57% - DeFi TVL growing but token underperforming', dominance: 2.1 },
-  { symbol: 'SHIB', name: 'Shiba Inu', qty: 5000000, currentPrice: 0.00059461, buyPrice: 5.0, buyValue: 25000, currentValue: 2973, pnl: -88.1, status: 'critical', alert: 'Meme coin - down 90%. No fundamental value, EXIT.', dominance: 0.4 },
-  { symbol: 'AVAX', name: 'Avalanche', qty: 8, buyPrice: 4200, currentPrice: 864.62, buyValue: 33600, currentValue: 6917, pnl: -79.4, status: 'critical', alert: 'Down 80% - subnet adoption not translating to token value', dominance: 0.8 },
-  { symbol: 'ADA', name: 'Cardano', qty: 200, buyPrice: 68, currentPrice: 23.61, buyValue: 13600, currentValue: 4722, pnl: -65.3, status: 'critical', alert: 'Down 65% - ecosystem still small, consider exit', dominance: 1.2 },
+  { symbol: 'BTC', name: 'Bitcoin', qty: 0.012, buyPrice: 5200000, currentPrice: 7507250, buyValue: 62400, currentValue: 90087, pnl: 44.4, status: 'positive', alert: 'Halving cycle bullish - approaching ATH territory', dominance: 54.2 },
+  { symbol: 'ETH', name: 'Ethereum', qty: 0.25, buyPrice: 320000, currentPrice: 221946, buyValue: 80000, currentValue: 55487, pnl: -30.6, status: 'critical', alert: 'L2 scaling reducing fee revenue, deflationary thesis weakening', dominance: 16.8 },
+  { symbol: 'SOL', name: 'Solana', qty: 2, buyPrice: 18500, currentPrice: 8021.67, buyValue: 37000, currentValue: 16043, pnl: -56.6, status: 'critical', alert: 'Down 57% - DeFi TVL growing but token underperforming', dominance: 2.1 },
+  { symbol: 'SHIB', name: 'Shiba Inu', qty: 5000000, currentPrice: 0.00058949, buyPrice: 5.0, buyValue: 25000, currentValue: 2947, pnl: -88.2, status: 'critical', alert: 'Meme coin - down 90%. No fundamental value, EXIT.', dominance: 0.4 },
+  { symbol: 'AVAX', name: 'Avalanche', qty: 8, buyPrice: 4200, currentPrice: 868.32, buyValue: 33600, currentValue: 6947, pnl: -79.3, status: 'critical', alert: 'Down 80% - subnet adoption not translating to token value', dominance: 0.8 },
+  { symbol: 'ADA', name: 'Cardano', qty: 200, buyPrice: 68, currentPrice: 23.81, buyValue: 13600, currentValue: 4762, pnl: -65.0, status: 'critical', alert: 'Down 65% - ecosystem still small, consider exit', dominance: 1.2 },
 ];
 
 // ═══════════════════════════════════════════════════════════
