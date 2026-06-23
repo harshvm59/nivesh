@@ -56,34 +56,34 @@ const INDIAN_STOCKS = [
 // NOTE: User flagged PLTR holdings need verification
 // ═══════════════════════════════════════════════════════════
 const US_STOCKS = [
-  { symbol: 'NVDA', name: 'NVIDIA Corp', sector: 'Semiconductors', qty: 50, buyPrice: 62, currentPrice: 201.754, buyValue: 3100, currentValue: 10088, pnl: 225.4, status: 'positive', alert: 'AI infrastructure spending continues - Blackwell generation' },
-  { symbol: 'TSLA', name: 'Tesla Inc', sector: 'EV / Auto', qty: 20, buyPrice: 210, currentPrice: 381.95, buyValue: 4200, currentValue: 7639, pnl: 81.9, status: 'positive', alert: 'Robotaxi + energy storage driving valuation' },
-  { symbol: 'META', name: 'Meta Platforms', sector: 'Social Media', qty: 12, buyPrice: 380, currentPrice: 564.74, buyValue: 4560, currentValue: 6777, pnl: 48.6, status: 'positive', alert: 'Reels monetization + AI investment paying off' },
-  { symbol: 'MSFT', name: 'Microsoft Corp', sector: 'Software', qty: 15, buyPrice: 420, currentPrice: 373.14, buyValue: 6300, currentValue: 5597, pnl: -11.2, status: 'warning', alert: 'Azure growth steady, Copilot monetization progressing' },
-  { symbol: 'AAPL', name: 'Apple Inc', sector: 'Consumer Tech', qty: 30, buyPrice: 178, currentPrice: 299, buyValue: 5340, currentValue: 8970, pnl: 68.0, status: 'positive', alert: 'iPhone cycle + Services segment growing strongly' },
-  { symbol: 'GOOGL', name: 'Alphabet Inc', sector: 'Search / Cloud', qty: 35, buyPrice: 138, currentPrice: 346.68, buyValue: 4830, currentValue: 12134, pnl: 151.2, status: 'positive', alert: 'Search + Cloud profitable, Gemini gaining traction' },
-  { symbol: 'AMZN', name: 'Amazon.com', sector: 'E-Commerce / Cloud', qty: 28, buyPrice: 155, currentPrice: 234.65, buyValue: 4340, currentValue: 6570, pnl: 51.4, status: 'positive', alert: 'AWS re-acceleration + retail margin expansion' },
-  { symbol: 'AMD', name: 'Advanced Micro Devices', sector: 'Semiconductors', qty: 30, buyPrice: 120, currentPrice: 519.41, buyValue: 3600, currentValue: 15582, pnl: 332.8, status: 'positive', alert: 'Data center GPU share gains, MI300X ramp' },
-  { symbol: 'NFLX', name: 'Netflix Inc', sector: 'Streaming', qty: 80, buyPrice: 48, currentPrice: 73.18, buyValue: 3840, currentValue: 5854, pnl: 52.4, status: 'positive', alert: 'Post 10:1 split. Ad tier + password sharing crackdown working.' },
-  { symbol: 'CRM', name: 'Salesforce Inc', sector: 'Enterprise SW', qty: 18, buyPrice: 245, currentPrice: 154.055, buyValue: 4410, currentValue: 2773, pnl: -37.1, status: 'critical', alert: 'Enterprise spending softening, AI agents competition' },
-  { symbol: 'AVGO', name: 'Broadcom Inc', sector: 'Semiconductors', qty: 25, buyPrice: 155, currentPrice: 381.453, buyValue: 3875, currentValue: 9536, pnl: 146.1, status: 'positive', alert: 'VMware integration complete + AI networking demand' },
-  { symbol: 'PLTR', name: 'Palantir Technologies', sector: 'AI / Analytics', qty: 100, buyPrice: 22, currentPrice: 117.95, buyValue: 2200, currentValue: 11795, pnl: 436.1, status: 'positive', alert: 'AIP platform driving commercial growth. [Holdings need verification]' },
-  { symbol: 'SNOW', name: 'Snowflake Inc', sector: 'Cloud Data', qty: 20, buyPrice: 185, currentPrice: 231.8, buyValue: 3700, currentValue: 4636, pnl: 25.3, status: 'positive', alert: 'Consumption model headwinds but stabilizing' },
-  { symbol: 'COIN', name: 'Coinbase Global', sector: 'Crypto Exchange', qty: 15, buyPrice: 180, currentPrice: 159.01, buyValue: 2700, currentValue: 2385, pnl: -11.7, status: 'warning', alert: 'Tied to crypto cycle - Bitcoin holding well' },
-  { symbol: 'SOFI', name: 'SoFi Technologies', sector: 'Fintech', qty: 200, buyPrice: 8.5, currentPrice: 17.355, buyValue: 1700, currentValue: 3471, pnl: 104.2, status: 'positive', alert: 'Bank charter driving NII growth, membership expanding' },
-  { symbol: 'NIO', name: 'NIO Inc', sector: 'EV', qty: 300, buyPrice: 8, currentPrice: 5.08, buyValue: 2400, currentValue: 1524, pnl: -36.5, status: 'critical', alert: 'Cash burn + China EV price war. No path to profitability.' },
+  { symbol: 'NVDA', name: 'NVIDIA Corp', sector: 'Semiconductors', qty: 50, buyPrice: 62, currentPrice: 200.04, buyValue: 3100, currentValue: 10002, pnl: 222.6, status: 'positive', alert: 'AI infrastructure spending continues - Blackwell generation' },
+  { symbol: 'TSLA', name: 'Tesla Inc', sector: 'EV / Auto', qty: 20, buyPrice: 210, currentPrice: 381.61, buyValue: 4200, currentValue: 7632, pnl: 81.7, status: 'positive', alert: 'Robotaxi + energy storage driving valuation' },
+  { symbol: 'META', name: 'Meta Platforms', sector: 'Social Media', qty: 12, buyPrice: 380, currentPrice: 562.2, buyValue: 4560, currentValue: 6746, pnl: 47.9, status: 'positive', alert: 'Reels monetization + AI investment paying off' },
+  { symbol: 'MSFT', name: 'Microsoft Corp', sector: 'Software', qty: 15, buyPrice: 420, currentPrice: 373.94, buyValue: 6300, currentValue: 5609, pnl: -11.0, status: 'warning', alert: 'Azure growth steady, Copilot monetization progressing' },
+  { symbol: 'AAPL', name: 'Apple Inc', sector: 'Consumer Tech', qty: 30, buyPrice: 178, currentPrice: 294.3, buyValue: 5340, currentValue: 8829, pnl: 65.3, status: 'positive', alert: 'iPhone cycle + Services segment growing strongly' },
+  { symbol: 'GOOGL', name: 'Alphabet Inc', sector: 'Search / Cloud', qty: 35, buyPrice: 138, currentPrice: 346.13, buyValue: 4830, currentValue: 12115, pnl: 150.8, status: 'positive', alert: 'Search + Cloud profitable, Gemini gaining traction' },
+  { symbol: 'AMZN', name: 'Amazon.com', sector: 'E-Commerce / Cloud', qty: 28, buyPrice: 155, currentPrice: 234.11, buyValue: 4340, currentValue: 6555, pnl: 51.0, status: 'positive', alert: 'AWS re-acceleration + retail margin expansion' },
+  { symbol: 'AMD', name: 'Advanced Micro Devices', sector: 'Semiconductors', qty: 30, buyPrice: 120, currentPrice: 519.85, buyValue: 3600, currentValue: 15596, pnl: 333.2, status: 'positive', alert: 'Data center GPU share gains, MI300X ramp' },
+  { symbol: 'NFLX', name: 'Netflix Inc', sector: 'Streaming', qty: 80, buyPrice: 48, currentPrice: 72.82, buyValue: 3840, currentValue: 5826, pnl: 51.7, status: 'positive', alert: 'Post 10:1 split. Ad tier + password sharing crackdown working.' },
+  { symbol: 'CRM', name: 'Salesforce Inc', sector: 'Enterprise SW', qty: 18, buyPrice: 245, currentPrice: 153.42, buyValue: 4410, currentValue: 2762, pnl: -37.4, status: 'critical', alert: 'Enterprise spending softening, AI agents competition' },
+  { symbol: 'AVGO', name: 'Broadcom Inc', sector: 'Semiconductors', qty: 25, buyPrice: 155, currentPrice: 380.15, buyValue: 3875, currentValue: 9504, pnl: 145.3, status: 'positive', alert: 'VMware integration complete + AI networking demand' },
+  { symbol: 'PLTR', name: 'Palantir Technologies', sector: 'AI / Analytics', qty: 100, buyPrice: 22, currentPrice: 116.7, buyValue: 2200, currentValue: 11670, pnl: 430.5, status: 'positive', alert: 'AIP platform driving commercial growth. [Holdings need verification]' },
+  { symbol: 'SNOW', name: 'Snowflake Inc', sector: 'Cloud Data', qty: 20, buyPrice: 185, currentPrice: 230.41, buyValue: 3700, currentValue: 4608, pnl: 24.5, status: 'positive', alert: 'Consumption model headwinds but stabilizing' },
+  { symbol: 'COIN', name: 'Coinbase Global', sector: 'Crypto Exchange', qty: 15, buyPrice: 180, currentPrice: 158.18, buyValue: 2700, currentValue: 2373, pnl: -12.1, status: 'warning', alert: 'Tied to crypto cycle - Bitcoin holding well' },
+  { symbol: 'SOFI', name: 'SoFi Technologies', sector: 'Fintech', qty: 200, buyPrice: 8.5, currentPrice: 17.29, buyValue: 1700, currentValue: 3458, pnl: 103.4, status: 'positive', alert: 'Bank charter driving NII growth, membership expanding' },
+  { symbol: 'NIO', name: 'NIO Inc', sector: 'EV', qty: 300, buyPrice: 8, currentPrice: 5.09, buyValue: 2400, currentValue: 1527, pnl: -36.4, status: 'critical', alert: 'Cash burn + China EV price war. No path to profitability.' },
 ];
 
 // ═══════════════════════════════════════════════════════════
 // CRYPTO - 6 Holdings (prices in INR from CoinGecko)
 // ═══════════════════════════════════════════════════════════
 const CRYPTO_HOLDINGS = [
-  { symbol: 'BTC', name: 'Bitcoin', qty: 0.012, buyPrice: 5200000, currentPrice: 5903957, buyValue: 62400, currentValue: 70847, pnl: 13.5, status: 'neutral', alert: 'Halving cycle bullish - approaching ATH territory', dominance: 54.2 },
-  { symbol: 'ETH', name: 'Ethereum', qty: 0.25, buyPrice: 320000, currentPrice: 156756, buyValue: 80000, currentValue: 39189, pnl: -51.0, status: 'critical', alert: 'L2 scaling reducing fee revenue, deflationary thesis weakening', dominance: 16.8 },
-  { symbol: 'SOL', name: 'Solana', qty: 2, buyPrice: 18500, currentPrice: 6505.48, buyValue: 37000, currentValue: 13011, pnl: -64.8, status: 'critical', alert: 'Down 57% - DeFi TVL growing but token underperforming', dominance: 2.1 },
-  { symbol: 'SHIB', name: 'Shiba Inu', qty: 5000000, currentPrice: 0.00042941, buyPrice: 5.0, buyValue: 25000, currentValue: 2147, pnl: -91.4, status: 'critical', alert: 'Meme coin - down 90%. No fundamental value, EXIT.', dominance: 0.4 },
-  { symbol: 'AVAX', name: 'Avalanche', qty: 8, buyPrice: 4200, currentPrice: 595.16, buyValue: 33600, currentValue: 4761, pnl: -85.8, status: 'critical', alert: 'Down 80% - subnet adoption not translating to token value', dominance: 0.8 },
-  { symbol: 'ADA', name: 'Cardano', qty: 200, buyPrice: 68, currentPrice: 14.22, buyValue: 13600, currentValue: 2844, pnl: -79.1, status: 'critical', alert: 'Down 65% - ecosystem still small, consider exit', dominance: 1.2 },
+  { symbol: 'BTC', name: 'Bitcoin', qty: 0.012, buyPrice: 5200000, currentPrice: 5944671, buyValue: 62400, currentValue: 71336, pnl: 14.3, status: 'neutral', alert: 'Halving cycle bullish - approaching ATH territory', dominance: 54.2 },
+  { symbol: 'ETH', name: 'Ethereum', qty: 0.25, buyPrice: 320000, currentPrice: 157950, buyValue: 80000, currentValue: 39488, pnl: -50.6, status: 'critical', alert: 'L2 scaling reducing fee revenue, deflationary thesis weakening', dominance: 16.8 },
+  { symbol: 'SOL', name: 'Solana', qty: 2, buyPrice: 18500, currentPrice: 6603.36, buyValue: 37000, currentValue: 13207, pnl: -64.3, status: 'critical', alert: 'Down 57% - DeFi TVL growing but token underperforming', dominance: 2.1 },
+  { symbol: 'SHIB', name: 'Shiba Inu', qty: 5000000, currentPrice: 0.00043365, buyPrice: 5.0, buyValue: 25000, currentValue: 2168, pnl: -91.3, status: 'critical', alert: 'Meme coin - down 90%. No fundamental value, EXIT.', dominance: 0.4 },
+  { symbol: 'AVAX', name: 'Avalanche', qty: 8, buyPrice: 4200, currentPrice: 613.71, buyValue: 33600, currentValue: 4910, pnl: -85.4, status: 'critical', alert: 'Down 80% - subnet adoption not translating to token value', dominance: 0.8 },
+  { symbol: 'ADA', name: 'Cardano', qty: 200, buyPrice: 68, currentPrice: 14.38, buyValue: 13600, currentValue: 2876, pnl: -78.9, status: 'critical', alert: 'Down 65% - ecosystem still small, consider exit', dominance: 1.2 },
 ];
 
 // ═══════════════════════════════════════════════════════════
