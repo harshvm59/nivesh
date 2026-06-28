@@ -8,7 +8,7 @@ const PORTFOLIO_META = {
   ytdReturn: null, // computed dynamically
   oneDayChange: null,
   allocationTarget: { india: 60, us: 30, crypto: 10 },
-  currency: { inr: 94.3 }, // USD to INR (live 2026-03-09)
+  currency: { inr: 94.385 }, // USD to INR (live 2026-03-09)
 };
 
 // ═══════════════════════════════════════════════════════════
@@ -70,7 +70,7 @@ const US_STOCKS = [
   { symbol: 'PLTR', name: 'Palantir Technologies', sector: 'AI / Analytics', qty: 100, buyPrice: 22, currentPrice: 112.93, buyValue: 2200, currentValue: 11293, pnl: 413.3, status: 'positive', alert: 'AIP platform driving commercial growth. [Holdings need verification]' },
   { symbol: 'SNOW', name: 'Snowflake Inc', sector: 'Cloud Data', qty: 20, buyPrice: 185, currentPrice: 248.96, buyValue: 3700, currentValue: 4979, pnl: 34.6, status: 'positive', alert: 'Consumption model headwinds but stabilizing' },
   { symbol: 'COIN', name: 'Coinbase Global', sector: 'Crypto Exchange', qty: 15, buyPrice: 180, currentPrice: 149.06, buyValue: 2700, currentValue: 2236, pnl: -17.2, status: 'warning', alert: 'Tied to crypto cycle - Bitcoin holding well' },
-  { symbol: 'SOFI', name: 'SoFi Technologies', sector: 'Fintech', qty: 200, buyPrice: 8.5, currentPrice: 17.88, buyValue: 1700, currentValue: 3576, pnl: 110.4, status: 'positive', alert: 'Bank charter driving NII growth, membership expanding' },
+  { symbol: 'SOFI', name: 'SoFi Technologies', sector: 'Fintech', qty: 200, buyPrice: 8.5, currentPrice: 17.85, buyValue: 1700, currentValue: 3570, pnl: 110.0, status: 'positive', alert: 'Bank charter driving NII growth, membership expanding' },
   { symbol: 'NIO', name: 'NIO Inc', sector: 'EV', qty: 300, buyPrice: 8, currentPrice: 4.86, buyValue: 2400, currentValue: 1458, pnl: -39.3, status: 'critical', alert: 'Cash burn + China EV price war. No path to profitability.' },
 ];
 
@@ -78,12 +78,12 @@ const US_STOCKS = [
 // CRYPTO - 6 Holdings (prices in INR from CoinGecko)
 // ═══════════════════════════════════════════════════════════
 const CRYPTO_HOLDINGS = [
-  { symbol: 'BTC', name: 'Bitcoin', qty: 0.012, buyPrice: 5200000, currentPrice: 5691712, buyValue: 62400, currentValue: 68301, pnl: 9.5, status: 'neutral', alert: 'Halving cycle bullish - approaching ATH territory', dominance: 54.2 },
-  { symbol: 'ETH', name: 'Ethereum', qty: 0.25, buyPrice: 320000, currentPrice: 149264, buyValue: 80000, currentValue: 37316, pnl: -53.4, status: 'critical', alert: 'L2 scaling reducing fee revenue, deflationary thesis weakening', dominance: 16.8 },
-  { symbol: 'SOL', name: 'Solana', qty: 2, buyPrice: 18500, currentPrice: 6785.01, buyValue: 37000, currentValue: 13570, pnl: -63.3, status: 'critical', alert: 'Down 57% - DeFi TVL growing but token underperforming', dominance: 2.1 },
-  { symbol: 'SHIB', name: 'Shiba Inu', qty: 5000000, currentPrice: 0.00040081, buyPrice: 5.0, buyValue: 25000, currentValue: 2004, pnl: -92.0, status: 'critical', alert: 'Meme coin - down 90%. No fundamental value, EXIT.', dominance: 0.4 },
-  { symbol: 'AVAX', name: 'Avalanche', qty: 8, buyPrice: 4200, currentPrice: 615.08, buyValue: 33600, currentValue: 4921, pnl: -85.4, status: 'critical', alert: 'Down 80% - subnet adoption not translating to token value', dominance: 0.8 },
-  { symbol: 'ADA', name: 'Cardano', qty: 200, buyPrice: 68, currentPrice: 13.89, buyValue: 13600, currentValue: 2778, pnl: -79.6, status: 'critical', alert: 'Down 65% - ecosystem still small, consider exit', dominance: 1.2 },
+  { symbol: 'BTC', name: 'Bitcoin', qty: 0.012, buyPrice: 5200000, currentPrice: 5562097, buyValue: 62400, currentValue: 66745, pnl: 7.0, status: 'neutral', alert: 'Halving cycle bullish - approaching ATH territory', dominance: 54.2 },
+  { symbol: 'ETH', name: 'Ethereum', qty: 0.25, buyPrice: 320000, currentPrice: 146553, buyValue: 80000, currentValue: 36638, pnl: -54.2, status: 'critical', alert: 'L2 scaling reducing fee revenue, deflationary thesis weakening', dominance: 16.8 },
+  { symbol: 'SOL', name: 'Solana', qty: 2, buyPrice: 18500, currentPrice: 6607.71, buyValue: 37000, currentValue: 13215, pnl: -64.3, status: 'critical', alert: 'Down 57% - DeFi TVL growing but token underperforming', dominance: 2.1 },
+  { symbol: 'SHIB', name: 'Shiba Inu', qty: 5000000, currentPrice: 0.00038707, buyPrice: 5.0, buyValue: 25000, currentValue: 1935, pnl: -92.3, status: 'critical', alert: 'Meme coin - down 90%. No fundamental value, EXIT.', dominance: 0.4 },
+  { symbol: 'AVAX', name: 'Avalanche', qty: 8, buyPrice: 4200, currentPrice: 597.41, buyValue: 33600, currentValue: 4779, pnl: -85.8, status: 'critical', alert: 'Down 80% - subnet adoption not translating to token value', dominance: 0.8 },
+  { symbol: 'ADA', name: 'Cardano', qty: 200, buyPrice: 68, currentPrice: 13.37, buyValue: 13600, currentValue: 2674, pnl: -80.3, status: 'critical', alert: 'Down 65% - ecosystem still small, consider exit', dominance: 1.2 },
 ];
 
 // ═══════════════════════════════════════════════════════════
