@@ -8,7 +8,7 @@ const PORTFOLIO_META = {
   ytdReturn: null, // computed dynamically
   oneDayChange: null,
   allocationTarget: { india: 60, us: 30, crypto: 10 },
-  currency: { inr: 95.68 }, // USD to INR (live 2026-03-09)
+  currency: { inr: 95.7425 }, // USD to INR (live 2026-03-09)
 };
 
 // ═══════════════════════════════════════════════════════════
@@ -18,36 +18,36 @@ const PORTFOLIO_META = {
 // TATAMOTORS → TMCV (demerger)
 // ═══════════════════════════════════════════════════════════
 const INDIAN_STOCKS = [
-  { symbol: 'KPITTECH', name: 'KPIT Technologies', sector: 'IT Services', qty: 50, buyPrice: 1480, currentPrice: 589.3, buyValue: 74000, currentValue: 29465, pnl: -60.2, status: 'critical', alert: 'Revenue growth collapsed - margins compressing. Classic deterioration.' },
-  { symbol: 'BEL', name: 'Bharat Electronics', sector: 'Defence', qty: 200, buyPrice: 148, currentPrice: 414, buyValue: 29600, currentValue: 82800, pnl: 179.7, status: 'positive', alert: 'Defence tailwind - order book strong, 3x returns' },
-  { symbol: 'SHRIRAMFIN', name: 'Shriram Finance', sector: 'NBFC', qty: 250, buyPrice: 172, currentPrice: 1130, buyValue: 43000, currentValue: 282500, pnl: 557.0, status: 'positive', alert: 'Massive compounder - 5.7x returns. Credit cycle sweet spot.' },
-  { symbol: 'ETERNAL', name: 'Eternal (Zomato)', sector: 'Consumer Tech', qty: 300, buyPrice: 185, currentPrice: 328, buyValue: 55500, currentValue: 98400, pnl: 77.3, status: 'positive', alert: 'Recovery from lows - quick commerce scaling' },
-  { symbol: 'HDFCBANK', name: 'HDFC Bank', sector: 'Banking', qty: 60, buyPrice: 790, currentPrice: 726.95, buyValue: 47400, currentValue: 43617, pnl: -8.0, status: 'warning', alert: 'Post-bonus adjustment. Merger integration on track.' },
-  { symbol: 'RELIANCE', name: 'Reliance Industries', sector: 'Conglomerate', qty: 40, buyPrice: 1225, currentPrice: 1316, buyValue: 49000, currentValue: 52640, pnl: 7.4, status: 'neutral', alert: 'Post-bonus. Jio + Retail growth steady.' },
-  { symbol: 'TCS', name: 'Tata Consultancy', sector: 'IT Services', qty: 12, buyPrice: 3650, currentPrice: 2302, buyValue: 43800, currentValue: 27624, pnl: -36.9, status: 'critical', alert: 'IT sector under pressure - macro headwinds persist' },
-  { symbol: 'INFY', name: 'Infosys', sector: 'IT Services', qty: 25, buyPrice: 1520, currentPrice: 1121, buyValue: 38000, currentValue: 28025, pnl: -26.3, status: 'critical', alert: 'IT sector pressure - margins holding but growth soft' },
-  { symbol: 'TMCV', name: 'Tata Motors (CV)', sector: 'Auto', qty: 60, buyPrice: 620, currentPrice: 471.05, buyValue: 37200, currentValue: 28263, pnl: -24.0, status: 'critical', alert: 'Post-demerger. CV business separated from PV (TAMO).' },
-  { symbol: 'BAJFINANCE', name: 'Bajaj Finance', sector: 'NBFC', qty: 60, buyPrice: 680, currentPrice: 1095, buyValue: 40800, currentValue: 65700, pnl: 61.0, status: 'positive', alert: 'Post 4:1 bonus + 1:2 split. AUM growth strong.' },
-  { symbol: 'SBIN', name: 'State Bank of India', sector: 'Banking', qty: 55, buyPrice: 580, currentPrice: 1048.7, buyValue: 31900, currentValue: 57679, pnl: 80.8, status: 'positive', alert: 'Banking rally - NIMs stable, asset quality improving' },
-  { symbol: 'LT', name: 'Larsen & Toubro', sector: 'Infrastructure', qty: 10, buyPrice: 3200, currentPrice: 4093, buyValue: 32000, currentValue: 40930, pnl: 27.9, status: 'positive', alert: 'Order book at all-time high - infra capex cycle' },
-  { symbol: 'SUNPHARMA', name: 'Sun Pharma', sector: 'Pharma', qty: 20, buyPrice: 1350, currentPrice: 1902.4, buyValue: 27000, currentValue: 38048, pnl: 40.9, status: 'positive', alert: 'Specialty portfolio ramping up strongly' },
-  { symbol: 'TITAN', name: 'Titan Company', sector: 'Consumer', qty: 8, buyPrice: 3400, currentPrice: 5086.1, buyValue: 27200, currentValue: 40689, pnl: 49.6, status: 'positive', alert: 'Premium jewellery + watches driving growth' },
-  { symbol: 'MARUTI', name: 'Maruti Suzuki', sector: 'Auto', qty: 3, buyPrice: 10200, currentPrice: 13565, buyValue: 30600, currentValue: 40695, pnl: 33.0, status: 'positive', alert: 'SUV mix improving margins significantly' },
-  { symbol: 'ASIANPAINT', name: 'Asian Paints', sector: 'Consumer', qty: 10, buyPrice: 3100, currentPrice: 2640, buyValue: 31000, currentValue: 26400, pnl: -14.8, status: 'warning', alert: 'Competition from Birla Opus + Grasim eating market share' },
-  { symbol: 'WIPRO', name: 'Wipro', sector: 'IT Services', qty: 100, buyPrice: 210, currentPrice: 180.79, buyValue: 21000, currentValue: 18079, pnl: -13.9, status: 'warning', alert: 'Post 1:1 bonus. IT sector weakness continues.' },
-  { symbol: 'ICICIBANK', name: 'ICICI Bank', sector: 'Banking', qty: 18, buyPrice: 960, currentPrice: 1420, buyValue: 17280, currentValue: 25560, pnl: 47.9, status: 'positive', alert: 'Best-in-class asset quality, consistent performer' },
-  { symbol: 'HCLTECH', name: 'HCL Technologies', sector: 'IT Services', qty: 12, buyPrice: 1380, currentPrice: 1302.5, buyValue: 16560, currentValue: 15630, pnl: -5.6, status: 'warning', alert: 'Services + products mix holding steady' },
-  { symbol: 'COALINDIA', name: 'Coal India', sector: 'Mining', qty: 40, buyPrice: 380, currentPrice: 405.2, buyValue: 15200, currentValue: 16208, pnl: 6.6, status: 'neutral', alert: 'Dividend yield 6%+ attractive, steady performer' },
-  { symbol: 'ADANIENT', name: 'Adani Enterprises', sector: 'Conglomerate', qty: 5, buyPrice: 2800, currentPrice: 2997, buyValue: 14000, currentValue: 14985, pnl: 7.0, status: 'neutral', alert: 'Governance concerns + valuation pressure' },
-  { symbol: 'TATAPOWER', name: 'Tata Power', sector: 'Power', qty: 30, buyPrice: 380, currentPrice: 374.3, buyValue: 11400, currentValue: 11229, pnl: -1.5, status: 'neutral', alert: 'Renewable capacity addition on track, flat returns' },
-  { symbol: 'IRCTC', name: 'IRCTC', sector: 'Travel', qty: 12, buyPrice: 850, currentPrice: 484.8, buyValue: 10200, currentValue: 5818, pnl: -43.0, status: 'critical', alert: 'Convenience fee cut + competition impact severe' },
-  { symbol: 'DMART', name: 'Avenue Supermarts', sector: 'Retail', qty: 2, buyPrice: 4200, currentPrice: 3906, buyValue: 8400, currentValue: 7812, pnl: -7.0, status: 'warning', alert: 'Quick commerce disruption risk persists' },
-  { symbol: 'PERSISTENT', name: 'Persistent Systems', sector: 'IT Services', qty: 4, buyPrice: 4800, currentPrice: 5667.5, buyValue: 19200, currentValue: 22670, pnl: 18.1, status: 'positive', alert: 'Product engineering demand stable but flat returns' },
-  { symbol: 'DIXON', name: 'Dixon Technologies', sector: 'Electronics', qty: 3, buyPrice: 5500, currentPrice: 14850, buyValue: 16500, currentValue: 44550, pnl: 170.0, status: 'positive', alert: 'PLI beneficiary - Samsung + Apple partnerships driving growth' },
-  { symbol: 'HAL', name: 'Hindustan Aeronautics', sector: 'Defence', qty: 5, buyPrice: 3200, currentPrice: 5000, buyValue: 16000, currentValue: 25000, pnl: 56.3, status: 'positive', alert: 'Tejas orders + helicopter exports boosting revenue' },
-  { symbol: 'INDHOTEL', name: 'Indian Hotels', sector: 'Hospitality', qty: 15, buyPrice: 520, currentPrice: 730, buyValue: 7800, currentValue: 10950, pnl: 40.4, status: 'positive', alert: 'RevPAR expansion, new property openings' },
-  { symbol: 'JIOFIN', name: 'Jio Financial', sector: 'NBFC', qty: 20, buyPrice: 320, currentPrice: 244, buyValue: 6400, currentValue: 4880, pnl: -23.8, status: 'critical', alert: 'Still in early ramp-up phase, no profitability yet' },
-  { symbol: 'PAYTM', name: 'One97 Communications', sector: 'Fintech', qty: 15, buyPrice: 680, currentPrice: 1632, buyValue: 10200, currentValue: 24480, pnl: 140.0, status: 'positive', alert: 'Strong recovery from RBI restrictions! Revenue rebounding.' },
+  { symbol: 'KPITTECH', name: 'KPIT Technologies', sector: 'IT Services', qty: 50, buyPrice: 1480, currentPrice: 583.1, buyValue: 74000, currentValue: 29155, pnl: -60.6, status: 'critical', alert: 'Revenue growth collapsed - margins compressing. Classic deterioration.' },
+  { symbol: 'BEL', name: 'Bharat Electronics', sector: 'Defence', qty: 200, buyPrice: 148, currentPrice: 408.65, buyValue: 29600, currentValue: 81730, pnl: 176.1, status: 'positive', alert: 'Defence tailwind - order book strong, 3x returns' },
+  { symbol: 'SHRIRAMFIN', name: 'Shriram Finance', sector: 'NBFC', qty: 250, buyPrice: 172, currentPrice: 1115.6, buyValue: 43000, currentValue: 278900, pnl: 548.6, status: 'positive', alert: 'Massive compounder - 5.7x returns. Credit cycle sweet spot.' },
+  { symbol: 'ETERNAL', name: 'Eternal (Zomato)', sector: 'Consumer Tech', qty: 300, buyPrice: 185, currentPrice: 328.3, buyValue: 55500, currentValue: 98490, pnl: 77.5, status: 'positive', alert: 'Recovery from lows - quick commerce scaling' },
+  { symbol: 'HDFCBANK', name: 'HDFC Bank', sector: 'Banking', qty: 60, buyPrice: 790, currentPrice: 727.45, buyValue: 47400, currentValue: 43647, pnl: -7.9, status: 'warning', alert: 'Post-bonus adjustment. Merger integration on track.' },
+  { symbol: 'RELIANCE', name: 'Reliance Industries', sector: 'Conglomerate', qty: 40, buyPrice: 1225, currentPrice: 1304.1, buyValue: 49000, currentValue: 52164, pnl: 6.5, status: 'neutral', alert: 'Post-bonus. Jio + Retail growth steady.' },
+  { symbol: 'TCS', name: 'Tata Consultancy', sector: 'IT Services', qty: 12, buyPrice: 3650, currentPrice: 2281, buyValue: 43800, currentValue: 27372, pnl: -37.5, status: 'critical', alert: 'IT sector under pressure - macro headwinds persist' },
+  { symbol: 'INFY', name: 'Infosys', sector: 'IT Services', qty: 25, buyPrice: 1520, currentPrice: 1129.5, buyValue: 38000, currentValue: 28238, pnl: -25.7, status: 'critical', alert: 'IT sector pressure - margins holding but growth soft' },
+  { symbol: 'TMCV', name: 'Tata Motors (CV)', sector: 'Auto', qty: 60, buyPrice: 620, currentPrice: 475, buyValue: 37200, currentValue: 28500, pnl: -23.4, status: 'critical', alert: 'Post-demerger. CV business separated from PV (TAMO).' },
+  { symbol: 'BAJFINANCE', name: 'Bajaj Finance', sector: 'NBFC', qty: 60, buyPrice: 680, currentPrice: 1078.9, buyValue: 40800, currentValue: 64734, pnl: 58.7, status: 'positive', alert: 'Post 4:1 bonus + 1:2 split. AUM growth strong.' },
+  { symbol: 'SBIN', name: 'State Bank of India', sector: 'Banking', qty: 55, buyPrice: 580, currentPrice: 1036.1, buyValue: 31900, currentValue: 56985, pnl: 78.6, status: 'positive', alert: 'Banking rally - NIMs stable, asset quality improving' },
+  { symbol: 'LT', name: 'Larsen & Toubro', sector: 'Infrastructure', qty: 10, buyPrice: 3200, currentPrice: 4090.8, buyValue: 32000, currentValue: 40908, pnl: 27.8, status: 'positive', alert: 'Order book at all-time high - infra capex cycle' },
+  { symbol: 'SUNPHARMA', name: 'Sun Pharma', sector: 'Pharma', qty: 20, buyPrice: 1350, currentPrice: 1913.1, buyValue: 27000, currentValue: 38262, pnl: 41.7, status: 'positive', alert: 'Specialty portfolio ramping up strongly' },
+  { symbol: 'TITAN', name: 'Titan Company', sector: 'Consumer', qty: 8, buyPrice: 3400, currentPrice: 5065.5, buyValue: 27200, currentValue: 40524, pnl: 49.0, status: 'positive', alert: 'Premium jewellery + watches driving growth' },
+  { symbol: 'MARUTI', name: 'Maruti Suzuki', sector: 'Auto', qty: 3, buyPrice: 10200, currentPrice: 13590, buyValue: 30600, currentValue: 40770, pnl: 33.2, status: 'positive', alert: 'SUV mix improving margins significantly' },
+  { symbol: 'ASIANPAINT', name: 'Asian Paints', sector: 'Consumer', qty: 10, buyPrice: 3100, currentPrice: 2630, buyValue: 31000, currentValue: 26300, pnl: -15.2, status: 'warning', alert: 'Competition from Birla Opus + Grasim eating market share' },
+  { symbol: 'WIPRO', name: 'Wipro', sector: 'IT Services', qty: 100, buyPrice: 210, currentPrice: 181.31, buyValue: 21000, currentValue: 18131, pnl: -13.7, status: 'warning', alert: 'Post 1:1 bonus. IT sector weakness continues.' },
+  { symbol: 'ICICIBANK', name: 'ICICI Bank', sector: 'Banking', qty: 18, buyPrice: 960, currentPrice: 1413.9, buyValue: 17280, currentValue: 25450, pnl: 47.3, status: 'positive', alert: 'Best-in-class asset quality, consistent performer' },
+  { symbol: 'HCLTECH', name: 'HCL Technologies', sector: 'IT Services', qty: 12, buyPrice: 1380, currentPrice: 1318, buyValue: 16560, currentValue: 15816, pnl: -4.5, status: 'neutral', alert: 'Services + products mix holding steady' },
+  { symbol: 'COALINDIA', name: 'Coal India', sector: 'Mining', qty: 40, buyPrice: 380, currentPrice: 405.45, buyValue: 15200, currentValue: 16218, pnl: 6.7, status: 'neutral', alert: 'Dividend yield 6%+ attractive, steady performer' },
+  { symbol: 'ADANIENT', name: 'Adani Enterprises', sector: 'Conglomerate', qty: 5, buyPrice: 2800, currentPrice: 2980.8, buyValue: 14000, currentValue: 14904, pnl: 6.5, status: 'neutral', alert: 'Governance concerns + valuation pressure' },
+  { symbol: 'TATAPOWER', name: 'Tata Power', sector: 'Power', qty: 30, buyPrice: 380, currentPrice: 371.95, buyValue: 11400, currentValue: 11159, pnl: -2.1, status: 'neutral', alert: 'Renewable capacity addition on track, flat returns' },
+  { symbol: 'IRCTC', name: 'IRCTC', sector: 'Travel', qty: 12, buyPrice: 850, currentPrice: 483.6, buyValue: 10200, currentValue: 5803, pnl: -43.1, status: 'critical', alert: 'Convenience fee cut + competition impact severe' },
+  { symbol: 'DMART', name: 'Avenue Supermarts', sector: 'Retail', qty: 2, buyPrice: 4200, currentPrice: 3930.3, buyValue: 8400, currentValue: 7861, pnl: -6.4, status: 'warning', alert: 'Quick commerce disruption risk persists' },
+  { symbol: 'PERSISTENT', name: 'Persistent Systems', sector: 'IT Services', qty: 4, buyPrice: 4800, currentPrice: 5682.5, buyValue: 19200, currentValue: 22730, pnl: 18.4, status: 'positive', alert: 'Product engineering demand stable but flat returns' },
+  { symbol: 'DIXON', name: 'Dixon Technologies', sector: 'Electronics', qty: 3, buyPrice: 5500, currentPrice: 14530, buyValue: 16500, currentValue: 43590, pnl: 164.2, status: 'positive', alert: 'PLI beneficiary - Samsung + Apple partnerships driving growth' },
+  { symbol: 'HAL', name: 'Hindustan Aeronautics', sector: 'Defence', qty: 5, buyPrice: 3200, currentPrice: 4875, buyValue: 16000, currentValue: 24375, pnl: 52.3, status: 'positive', alert: 'Tejas orders + helicopter exports boosting revenue' },
+  { symbol: 'INDHOTEL', name: 'Indian Hotels', sector: 'Hospitality', qty: 15, buyPrice: 520, currentPrice: 727, buyValue: 7800, currentValue: 10905, pnl: 39.8, status: 'positive', alert: 'RevPAR expansion, new property openings' },
+  { symbol: 'JIOFIN', name: 'Jio Financial', sector: 'NBFC', qty: 20, buyPrice: 320, currentPrice: 242.55, buyValue: 6400, currentValue: 4851, pnl: -24.2, status: 'critical', alert: 'Still in early ramp-up phase, no profitability yet' },
+  { symbol: 'PAYTM', name: 'One97 Communications', sector: 'Fintech', qty: 15, buyPrice: 680, currentPrice: 1618, buyValue: 10200, currentValue: 24270, pnl: 137.9, status: 'positive', alert: 'Strong recovery from RBI restrictions! Revenue rebounding.' },
 ];
 
 // ═══════════════════════════════════════════════════════════
@@ -78,12 +78,12 @@ const US_STOCKS = [
 // CRYPTO - 6 Holdings (prices in INR from CoinGecko)
 // ═══════════════════════════════════════════════════════════
 const CRYPTO_HOLDINGS = [
-  { symbol: 'BTC', name: 'Bitcoin', qty: 0.012, buyPrice: 5200000, currentPrice: 7438272, buyValue: 62400, currentValue: 89259, pnl: 43.0, status: 'positive', alert: 'Halving cycle bullish - approaching ATH territory', dominance: 54.2 },
-  { symbol: 'ETH', name: 'Ethereum', qty: 0.25, buyPrice: 320000, currentPrice: 235809, buyValue: 80000, currentValue: 58952, pnl: -26.3, status: 'warning', alert: 'L2 scaling reducing fee revenue, deflationary thesis weakening', dominance: 16.8 },
-  { symbol: 'SOL', name: 'Solana', qty: 2, buyPrice: 18500, currentPrice: 9125.02, buyValue: 37000, currentValue: 18250, pnl: -50.7, status: 'critical', alert: 'Down 57% - DeFi TVL growing but token underperforming', dominance: 2.1 },
-  { symbol: 'SHIB', name: 'Shiba Inu', qty: 5000000, currentPrice: 0.0005293, buyPrice: 5.0, buyValue: 25000, currentValue: 2647, pnl: -89.4, status: 'critical', alert: 'Meme coin - down 90%. No fundamental value, EXIT.', dominance: 0.4 },
-  { symbol: 'AVAX', name: 'Avalanche', qty: 8, buyPrice: 4200, currentPrice: 730.47, buyValue: 33600, currentValue: 5844, pnl: -82.6, status: 'critical', alert: 'Down 80% - subnet adoption not translating to token value', dominance: 0.8 },
-  { symbol: 'ADA', name: 'Cardano', qty: 200, buyPrice: 68, currentPrice: 21.62, buyValue: 13600, currentValue: 4324, pnl: -68.2, status: 'critical', alert: 'Down 65% - ecosystem still small, consider exit', dominance: 1.2 },
+  { symbol: 'BTC', name: 'Bitcoin', qty: 0.012, buyPrice: 5200000, currentPrice: 7417375, buyValue: 62400, currentValue: 89009, pnl: 42.6, status: 'positive', alert: 'Halving cycle bullish - approaching ATH territory', dominance: 54.2 },
+  { symbol: 'ETH', name: 'Ethereum', qty: 0.25, buyPrice: 320000, currentPrice: 235622, buyValue: 80000, currentValue: 58906, pnl: -26.4, status: 'warning', alert: 'L2 scaling reducing fee revenue, deflationary thesis weakening', dominance: 16.8 },
+  { symbol: 'SOL', name: 'Solana', qty: 2, buyPrice: 18500, currentPrice: 9061.03, buyValue: 37000, currentValue: 18122, pnl: -51.0, status: 'critical', alert: 'Down 57% - DeFi TVL growing but token underperforming', dominance: 2.1 },
+  { symbol: 'SHIB', name: 'Shiba Inu', qty: 5000000, currentPrice: 0.00052056, buyPrice: 5.0, buyValue: 25000, currentValue: 2603, pnl: -89.6, status: 'critical', alert: 'Meme coin - down 90%. No fundamental value, EXIT.', dominance: 0.4 },
+  { symbol: 'AVAX', name: 'Avalanche', qty: 8, buyPrice: 4200, currentPrice: 716.17, buyValue: 33600, currentValue: 5729, pnl: -82.9, status: 'critical', alert: 'Down 80% - subnet adoption not translating to token value', dominance: 0.8 },
+  { symbol: 'ADA', name: 'Cardano', qty: 200, buyPrice: 68, currentPrice: 21.04, buyValue: 13600, currentValue: 4208, pnl: -69.1, status: 'critical', alert: 'Down 65% - ecosystem still small, consider exit', dominance: 1.2 },
 ];
 
 // ═══════════════════════════════════════════════════════════
