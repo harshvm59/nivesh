@@ -26,7 +26,7 @@ const INDIAN_STOCKS = [
   { symbol: 'RELIANCE', name: 'Reliance Industries', sector: 'Conglomerate', qty: 40, buyPrice: 1225, currentPrice: 1257.5, buyValue: 49000, currentValue: 50300, pnl: 2.7, status: 'neutral', alert: 'Post-bonus. Jio + Retail growth steady.' },
   { symbol: 'TCS', name: 'Tata Consultancy', sector: 'IT Services', qty: 12, buyPrice: 3650, currentPrice: 2200.8, buyValue: 43800, currentValue: 26410, pnl: -39.7, status: 'critical', alert: 'IT sector under pressure - macro headwinds persist' },
   { symbol: 'INFY', name: 'Infosys', sector: 'IT Services', qty: 25, buyPrice: 1520, currentPrice: 1037.7, buyValue: 38000, currentValue: 25943, pnl: -31.7, status: 'critical', alert: 'IT sector pressure - margins holding but growth soft' },
-  { symbol: 'TMCV', name: 'Tata Motors (CV)', sector: 'Auto', qty: 60, buyPrice: 620, currentPrice: 434.55, buyValue: 37200, currentValue: 26073, pnl: -29.9, status: 'critical', alert: 'Post-demerger. CV business separated from PV (TAMO).' },
+  { symbol: 'TMCV', name: 'Tata Motors (CV)', sector: 'Auto', qty: 60, buyPrice: 620, currentPrice: 434.1, buyValue: 37200, currentValue: 26046, pnl: -30.0, status: 'critical', alert: 'Post-demerger. CV business separated from PV (TAMO).' },
   { symbol: 'BAJFINANCE', name: 'Bajaj Finance', sector: 'NBFC', qty: 60, buyPrice: 680, currentPrice: 1034.5, buyValue: 40800, currentValue: 62070, pnl: 52.1, status: 'positive', alert: 'Post 4:1 bonus + 1:2 split. AUM growth strong.' },
   { symbol: 'SBIN', name: 'State Bank of India', sector: 'Banking', qty: 55, buyPrice: 580, currentPrice: 995.7, buyValue: 31900, currentValue: 54764, pnl: 71.7, status: 'positive', alert: 'Banking rally - NIMs stable, asset quality improving' },
   { symbol: 'LT', name: 'Larsen & Toubro', sector: 'Infrastructure', qty: 10, buyPrice: 3200, currentPrice: 3930.7, buyValue: 32000, currentValue: 39307, pnl: 22.8, status: 'positive', alert: 'Order book at all-time high - infra capex cycle' },
@@ -40,7 +40,7 @@ const INDIAN_STOCKS = [
   { symbol: 'COALINDIA', name: 'Coal India', sector: 'Mining', qty: 40, buyPrice: 380, currentPrice: 426.4, buyValue: 15200, currentValue: 17056, pnl: 12.2, status: 'neutral', alert: 'Dividend yield 6%+ attractive, steady performer' },
   { symbol: 'ADANIENT', name: 'Adani Enterprises', sector: 'Conglomerate', qty: 5, buyPrice: 2800, currentPrice: 3060, buyValue: 14000, currentValue: 15300, pnl: 9.3, status: 'neutral', alert: 'Governance concerns + valuation pressure' },
   { symbol: 'TATAPOWER', name: 'Tata Power', sector: 'Power', qty: 30, buyPrice: 380, currentPrice: 364.65, buyValue: 11400, currentValue: 10940, pnl: -4.0, status: 'neutral', alert: 'Renewable capacity addition on track, flat returns' },
-  { symbol: 'IRCTC', name: 'IRCTC', sector: 'Travel', qty: 12, buyPrice: 850, currentPrice: 462.9, buyValue: 10200, currentValue: 5555, pnl: -45.5, status: 'critical', alert: 'Convenience fee cut + competition impact severe' },
+  { symbol: 'IRCTC', name: 'IRCTC', sector: 'Travel', qty: 12, buyPrice: 850, currentPrice: 463.7, buyValue: 10200, currentValue: 5564, pnl: -45.5, status: 'critical', alert: 'Convenience fee cut + competition impact severe' },
   { symbol: 'DMART', name: 'Avenue Supermarts', sector: 'Retail', qty: 2, buyPrice: 4200, currentPrice: 3688, buyValue: 8400, currentValue: 7376, pnl: -12.2, status: 'warning', alert: 'Quick commerce disruption risk persists' },
   { symbol: 'PERSISTENT', name: 'Persistent Systems', sector: 'IT Services', qty: 4, buyPrice: 4800, currentPrice: 5516, buyValue: 19200, currentValue: 22064, pnl: 14.9, status: 'neutral', alert: 'Product engineering demand stable but flat returns' },
   { symbol: 'DIXON', name: 'Dixon Technologies', sector: 'Electronics', qty: 3, buyPrice: 5500, currentPrice: 13425, buyValue: 16500, currentValue: 40275, pnl: 144.1, status: 'positive', alert: 'PLI beneficiary - Samsung + Apple partnerships driving growth' },
@@ -78,12 +78,12 @@ const US_STOCKS = [
 // CRYPTO - 6 Holdings (prices in INR from CoinGecko)
 // ═══════════════════════════════════════════════════════════
 const CRYPTO_HOLDINGS = [
-  { symbol: 'BTC', name: 'Bitcoin', qty: 0.012, buyPrice: 5200000, currentPrice: 7390783, buyValue: 62400, currentValue: 88689, pnl: 42.1, status: 'positive', alert: 'Halving cycle bullish - approaching ATH territory', dominance: 54.2 },
-  { symbol: 'ETH', name: 'Ethereum', qty: 0.25, buyPrice: 320000, currentPrice: 242259, buyValue: 80000, currentValue: 60565, pnl: -24.3, status: 'warning', alert: 'L2 scaling reducing fee revenue, deflationary thesis weakening', dominance: 16.8 },
-  { symbol: 'SOL', name: 'Solana', qty: 2, buyPrice: 18500, currentPrice: 9772.44, buyValue: 37000, currentValue: 19545, pnl: -47.2, status: 'critical', alert: 'Down 57% - DeFi TVL growing but token underperforming', dominance: 2.1 },
-  { symbol: 'SHIB', name: 'Shiba Inu', qty: 5000000, currentPrice: 0.00051136, buyPrice: 5.0, buyValue: 25000, currentValue: 2557, pnl: -89.8, status: 'critical', alert: 'Meme coin - down 90%. No fundamental value, EXIT.', dominance: 0.4 },
-  { symbol: 'AVAX', name: 'Avalanche', qty: 8, buyPrice: 4200, currentPrice: 712.47, buyValue: 33600, currentValue: 5700, pnl: -83.0, status: 'critical', alert: 'Down 80% - subnet adoption not translating to token value', dominance: 0.8 },
-  { symbol: 'ADA', name: 'Cardano', qty: 200, buyPrice: 68, currentPrice: 19.97, buyValue: 13600, currentValue: 3994, pnl: -70.6, status: 'critical', alert: 'Down 65% - ecosystem still small, consider exit', dominance: 1.2 },
+  { symbol: 'BTC', name: 'Bitcoin', qty: 0.012, buyPrice: 5200000, currentPrice: 7295182, buyValue: 62400, currentValue: 87542, pnl: 40.3, status: 'positive', alert: 'Halving cycle bullish - approaching ATH territory', dominance: 54.2 },
+  { symbol: 'ETH', name: 'Ethereum', qty: 0.25, buyPrice: 320000, currentPrice: 235204, buyValue: 80000, currentValue: 58801, pnl: -26.5, status: 'warning', alert: 'L2 scaling reducing fee revenue, deflationary thesis weakening', dominance: 16.8 },
+  { symbol: 'SOL', name: 'Solana', qty: 2, buyPrice: 18500, currentPrice: 9449.92, buyValue: 37000, currentValue: 18900, pnl: -48.9, status: 'critical', alert: 'Down 57% - DeFi TVL growing but token underperforming', dominance: 2.1 },
+  { symbol: 'SHIB', name: 'Shiba Inu', qty: 5000000, currentPrice: 0.00048918, buyPrice: 5.0, buyValue: 25000, currentValue: 2446, pnl: -90.2, status: 'critical', alert: 'Meme coin - down 90%. No fundamental value, EXIT.', dominance: 0.4 },
+  { symbol: 'AVAX', name: 'Avalanche', qty: 8, buyPrice: 4200, currentPrice: 693.5, buyValue: 33600, currentValue: 5548, pnl: -83.5, status: 'critical', alert: 'Down 80% - subnet adoption not translating to token value', dominance: 0.8 },
+  { symbol: 'ADA', name: 'Cardano', qty: 200, buyPrice: 68, currentPrice: 19.37, buyValue: 13600, currentValue: 3874, pnl: -71.5, status: 'critical', alert: 'Down 65% - ecosystem still small, consider exit', dominance: 1.2 },
 ];
 
 // ═══════════════════════════════════════════════════════════
